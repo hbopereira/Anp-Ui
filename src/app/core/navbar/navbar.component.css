@@ -1,0 +1,48 @@
+.navbar{
+  padding: 10px 0;
+  background-color: #00ffff;
+}
+
+.navbar-toggle{
+  color: white;
+}
+
+.navbar-menu{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 210px;
+  margin: 0;
+  z-index: 9998;
+  background-color: #565656;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar-usuario{
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 15px;
+  border-bottom: 1px solid #525151;
+  margin-bottom: 15px;
+
+}
+
+.navbar-menuitem{
+  padding: 15px;
+}
+
+.navbar-menuitem a{
+  color: #c0bbb7;
+  text-decoration: none;
+}
+
+.navbar-menuitem a:hover{
+  color: white
+}
+
+.navbar-menuitem.ativo {
+   background-color: #4e4e4e;
+}

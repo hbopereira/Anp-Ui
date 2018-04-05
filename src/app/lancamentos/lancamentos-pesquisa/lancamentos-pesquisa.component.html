@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="ui-g">
+      <form autocomplete="false" (ngSubmit)="pesquisar()">
+
+          <div align="center" class="ui-g-12">
+            <h1>Lançamentos</h1>
+          </div>
+
+          <div align="center" class="ui-g-12">
+              <h3>Lançamentos Receitas/Despesas</h3>
+          </div>
+
+          <div class="ui-g-4 ui-fluid">
+            <label>Descrição</label>
+            <input type="text" pInputText name="descricao"
+            [(ngModel)]="filtroLancamento.descricao" placeholder="Informe uma descricao para a pesquisa">
+          </div>
+
+          <div class="ui-g-4 ui-md-4 ui-fluid">
+              <label>Pessoa Física/Juridica</label>
+              <input type="text" pInputText placeholder="Informe um nome para a pesquisa">
+          </div>
+
+          <div class="ui-g-4 ui-md-4 ui-fluid">
+            <label>Tipo Ocorrencia</label>
+            <input type="text" pInputText name="tipoOcorrencia"
+            [(ngModel)]="filtroLancamento.tipoOcorrencia" placeholder="Informe uma ocorrência para a pesquisa">
+          </div>
+
+          <div class="ui-g-5 ui-md-5 ui-fluid">
+              <label>Tipo Lancamento</label>
+              <input type="text" pInputText placeholder="Informe um tipo de lançamento para a pesquisa">
+          </div>
+
+          <div class="ui-g-5 ui-md-5 ui-fluid">
+              <label>Categoria</label>
+              <input type="text" pInputText placeholder="Informe a categoria para pesquisa">
+          </div>
+
+          <div class="ui-g-5 ui-md-2 ui-fluid">
+              <label style="display: block">Data Emissão</label>
+              <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" name="dataEmissao"
+               [(ngModel)]="filtroLancamento.dataEmissao" placeholder="Emissão"></p-calendar>
+          </div>
+
+          <div class="ui-g-12">
+              <label style="display: block">Data Vencimento</label>
+              <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" name="vencimentoDe"
+               [(ngModel)]="filtroLancamento.dataVencimentoDe" placeholder="Inicio"></p-calendar>
+              <label>até</label>
+              <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" name="vencimentoAte"
+               [(ngModel)]="filtroLancamento.dataVencimentoAte" placeholder="Fim"></p-calendar>
+          </div>
+
+          <div class="ui-g-12">
+              <button type="submit" label="Pesquisar" pButton></button>
+          </div>
+
+      </form>
+    </div>
+
+    <div align="center">
+        <h3>Lançamentos Registrados</h3>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12">
+           <p-dataTable [value]="lancamentos"
+           [paginator]="true" [rows]="filtroLancamento.itensPorPagina"
+           [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)"
+           [responsive]="true" emptyMessage="Nenhum lançamento encontrado"
+           #tabela>
+             <p-column field="pessoa" header="Nome/Razão Social"></p-column>
+             <p-column field="descricao" header="Descrição"></p-column>
+             <p-column header="Emissão" styleClass="col-data">
+                <ng-template let-lanc="rowData" pTemplate="body">
+                    <span>{{lanc.dataEmissao | date: 'dd/MM/yyyy'}}</span>
+                </ng-template>
+             </p-column>
+             <p-column header="Vencimento" styleClass="col-data">
+                <ng-template let-lanc="rowData" pTemplate="body">
+                    <span>{{lanc.dataVencimento | date: 'dd/MM/yyyy'}}</span>
+                </ng-template>
+             </p-column>
+             <p-column header="Pagamento" styleClass="col-data">
+                <ng-template let-lanc="rowData" pTemplate="body">
+                    <span>{{lanc.dataPagamento | date: 'dd/MM/yyyy'}}</span>
+                </ng-template>
+             </p-column>
+             <p-column field="valor" header="Valor" styleClass="col-valor">
+                <ng-template let-lanc="rowData" pTemplate="body">
+                    <span [style.color]="lanc.tipoLancamento === 'DESPESA' ? 'red' : 'blue'">{{ lanc.valor | number:'1.2-2' }}</span>
+                </ng-template>
+             </p-column>
+             <p-column field="tipoLancamento" header="Tipo"></p-column>
+             <p-column header="Ações" styleClass="col-acoes">
+               <ng-template let-lanc="rowData" pTemplate="body">
+                  <button class="ui-button-success" pButton pTooltip="Baixar Conta" tooltipPosition="top" icon="fa-check-circle"></button>
+                 <button class="ui-button-warning" pButton pTooltip="Editar"
+                   tooltipPosition="top" icon="fa-pencil"
+                   [routerLink]="['/lancamentos', lanc.id]">
+                 </button>
+                 <button class="ui-button-danger" pButton pTooltip="Excluir"
+                    tooltipPosition="top" icon="fa-trash" (click)="confirmarExclusao(lanc)"
+                    [disabled]="!auth.temPermissao('ROLE_REMOVER_LANCAMENTO')">
+                 </button>
+               </ng-template>
+             </p-column>
+           </p-dataTable>
+        </div>
+
+      </div>
+
+    <div class="ui-g">
+        <a class="ui-button-success" routerLink="/lancamentos/novo" label="Novo lancamento" pButton></a>
+    </div>
+
+  </div>
+
+
+
