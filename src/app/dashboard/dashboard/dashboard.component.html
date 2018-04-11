@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <h1 align="center">Painel de Lançamentos</h1>
+    </div>
+
+    <div class="ui-g-12 ui-md-6">
+      <p-panel align="center" header="Lançamentos por categoria">
+        <p-chart type="pie" [data]="pieChartDataCategoria"></p-chart>
+      </p-panel>
+    </div>
+
+    <div class="ui-g-12 ui-md-6">
+      <p-panel align="center" header="Lançamentos por ocorrencia">
+        <p-chart type="pie" [data]="pieChartDataOcorrencia"></p-chart>
+      </p-panel>
+    </div>
+
+    <div class="ui-g-12">
+      <p-panel align="center" header="Lançamentos por dia">
+        <p-chart type="line" [data]="lineChartData"></p-chart>
+      </p-panel>
+    </div>
+
+  </div>
+</div>

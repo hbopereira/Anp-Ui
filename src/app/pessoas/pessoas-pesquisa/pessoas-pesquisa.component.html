@@ -45,33 +45,56 @@
 
     <div class="ui-g">
         <div class="ui-g-12">
-          <p-dataTable [value]="pessoas"
+          <p-table [value]="pessoas"
           [paginator]="true" [rows]="filtroPessoa.itensPorPagina"
           [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)"
-          [responsive]="true" emptyMessage="Nenhuma pessoa encontrada" #tabela>
-              <p-column field="nome" header="Nome/Razão Social"></p-column>
-              <p-column field="cidade" header="Cidade"></p-column>
-              <p-column field="estado" header="Estado"></p-column>
-              <p-column field="tipo" header="Tipo"></p-column>
-              <p-column field="ativo" header="Status">
-                <ng-template let-pes="rowData" pTemplate="body">
-                    <a href="javascript:;" [pTooltip]="pes.ativo ? 'Desativar' : 'Ativar'"
-                        tooltipPosition="top" (click)="alternarStatus(pes)">
-                      {{ pes.ativo ? 'Ativo' : 'Inativo' }}
-                    </a>
-                </ng-template>
-              </p-column>
-              <p-column styleClass="col-acoes">
-                <ng-template let-pess="rowData" pTemplate="body">
-                  <button class="ui-button-warning" pButton icon="fa-pencil"
-                    [routerLink]="['/pessoas', pess.id]" pTooltip="Editar" tooltipPosition="top">
-                  </button>
-                  <button class="ui-button-danger" pButton icon="fa-trash"
-                    pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pess)">
-                  </button>
-                </ng-template>
-              </p-column>
-          </p-dataTable>
+          [responsive]="true" #tabela>
+
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Nome/Razão Social</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+              <th class="col-tipo-header">Tipo Pessoa</th>
+              <th>CPF/CNPJ</th>
+              <th class="col-status-header">Status</th>
+              <th>Acões</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-pessoa>
+            <tr>
+              <td>{{ pessoa.nome }}</td>
+              <td>{{ pessoa.endereco.cidade }}</td>
+              <td>{{ pessoa.endereco.estado }}</td>
+              <td class="col-tipo">{{ pessoa.tipo }}</td>
+              <td>{{ pessoa.cnpj }}</td>
+              <td class="col-status">
+                <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'"
+                   tooltipPosition="top" (click)="alternarStatus(pessoa)">
+                   {{ pessoa.ativo ? 'Ativo' : 'Inativo' }}
+                </a>
+              </td>
+              <td class="col-acoes-pessoa">
+                <button class="ui-button-warning" pButton icon="fa-pencil"
+                  [routerLink]="['/pessoas', pessoa.id]" pTooltip="Editar" tooltipPosition="top">
+                </button>
+                <button class="ui-button-danger" pButton icon="fa-trash"
+                  pTooltip="Excluir" tooltipPosition="top" (click)="confirmarExclusao(pessoa)">
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td>
+                Nenhuma pessoa encontrada
+              </td>
+            </tr>
+          </ng-template>
+
+          </p-table>
         </div>
       </div>
 

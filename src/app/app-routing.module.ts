@@ -8,7 +8,7 @@ import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa
 import { NaoAutorizadoComponent } from './core/nao-autorizado.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent},
   { path: '**', redirectTo: 'pagina-nao-encontrada' }

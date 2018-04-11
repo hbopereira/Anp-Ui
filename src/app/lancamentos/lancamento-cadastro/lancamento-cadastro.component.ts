@@ -1,5 +1,5 @@
 import { Component, OnInit, ErrorHandler } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -29,7 +29,7 @@ export class LancamentoCadastroComponent implements OnInit {
   categorias = [];
   ocorrencias = [];
   pessoas = [];
-  lancamento = new Lancamento();
+  formulario: FormGroup;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -40,10 +40,12 @@ export class LancamentoCadastroComponent implements OnInit {
     private errorHandler: ErrorHandler,
     private route: ActivatedRoute,
     private router: Router,
-    private title: Title
+    private title: Title,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
+    this.configurarFormulario();
     const idLancamento = this.route.snapshot.params['id'];
 
     if (idLancamento) {
@@ -56,16 +58,50 @@ export class LancamentoCadastroComponent implements OnInit {
     this.title.setTitle('Novo lançamento');
   }
 
-  salvar (form: FormControl) {
+  configurarFormulario() {
+   this.formulario = this.formBuilder.group({
+     id: [],
+     tipo: ['RECEITA', Validators.required],
+     dataVencimento: [null, Validators.required],
+     dataPagamento: [],
+     dataEmissao: [null, Validators.required],
+     descricao: [null, [this.validarObrigatoriedade, this.validarTamanhoMinimo(5)]],
+     ocorrencia: this.formBuilder.group({
+       id: [null, Validators.required],
+       descricao: []
+     }),
+     valor: [null, Validators.required],
+     categoria: this.formBuilder.group({
+       id: [ null, Validators.required],
+       descricao: []
+     }),
+     pessoa: this.formBuilder.group({
+      id: [ null, Validators.required],
+      nome: []
+    }),
+    observacao: []
+   });
+  }
+
+  validarObrigatoriedade(input: FormControl) {
+    return (input.value ? null : { obrigatoriedade: true});
+  }
+
+  validarTamanhoMinimo(valor: number) {
+    return (input: FormControl) => {
+      return (!input.value || input.value.length >= valor) ? null : {tamanhoMinimo: {tamanho: valor}};
+    };
+  }
+  salvar () {
     if (this.editando) {
-       this.atualizarLancamento(form);
+       this.atualizarLancamento();
     } else {
-      this.salvarLancamento(form);
+      this.salvarLancamento();
     }
   }
 
-  salvarLancamento(form: FormControl) {
-    this.lancamentoService.adicionar(this.lancamento)
+  salvarLancamento() {
+    this.lancamentoService.adicionar(this.formulario.value)
     .then(lancamento => {
        this.toasty.success('Lançamento adicionado com sucesso !');
        this.router.navigate(['/lancamentos', lancamento.id]);
@@ -73,11 +109,11 @@ export class LancamentoCadastroComponent implements OnInit {
     .catch(erro => this.errorHandler.handleError(erro));
   }
 
-  atualizarLancamento(form: FormControl) {
-    this.lancamentoService.atualizar(this.lancamento)
+  atualizarLancamento() {
+    this.lancamentoService.atualizar(this.formulario.value)
     .then(lancamento => {
-      this.lancamento = lancamento;
 
+      this.formulario.patchValue(lancamento);
       this.toasty.success('Lançamento editado com sucesso !');
       this.atualizarTituloEdicao();
       this.router.navigate(['lancamentos']);
@@ -86,13 +122,14 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   get editando() {
-    return Boolean(this.lancamento.id);
+    return Boolean(this.formulario.get('id').value);
   }
 
   carregarLancamento(id: number) {
     this.lancamentoService.buscarPorId(id)
     .then(lancamento => {
-      this.lancamento = lancamento;
+
+      this.formulario.patchValue(lancamento);
       this.atualizarTituloEdicao();
     })
     .catch(erro => this.errorHandler.handleError(erro));
@@ -128,12 +165,16 @@ export class LancamentoCadastroComponent implements OnInit {
     .catch(erro => this.errorHandler.handleError(erro));
  }
 
- novo(form: FormControl) {
-   this.router.navigate(['/lancamentos/novo']);
+ novo() {
+  this.formulario.reset();
+  setTimeout(function() {
+    this.lancamento = new Lancamento();
+  }.bind(this), 1);
+  this.router.navigate(['lancamentos/novo']);
  }
 
  atualizarTituloEdicao() {
-   this.title.setTitle(`Edição de lancamento: ${this.lancamento.descricao}`);
+   this.title.setTitle(`Edição de lancamento: ${this.formulario.get('descricao').value}`);
  }
 
 }

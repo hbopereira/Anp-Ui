@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PessoasRoutingModule } from './pessoas-routing.module';
 
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
-import { DataTableModule } from 'primeng/components/datatable/datatable';
+import { TableModule } from 'primeng/components/table/table';
 import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
@@ -28,7 +28,7 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     BrowserAnimationsModule,
     InputTextModule,
     ButtonModule,
-    DataTableModule,
+    TableModule,
     TooltipModule,
     CalendarModule,
     SelectButtonModule,
@@ -36,7 +36,8 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     FormsModule,
     InputMaskModule,
     SharedModule,
-    PessoasRoutingModule
+    PessoasRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     PessoaCadastroComponent,

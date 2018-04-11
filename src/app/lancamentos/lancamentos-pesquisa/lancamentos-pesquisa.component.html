@@ -65,48 +65,57 @@
 
     <div class="ui-g">
         <div class="ui-g-12">
-           <p-dataTable [value]="lancamentos"
+           <p-table [value]="lancamentos"
            [paginator]="true" [rows]="filtroLancamento.itensPorPagina"
            [lazy]="true" [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)"
-           [responsive]="true" emptyMessage="Nenhum lançamento encontrado"
+           [responsive]="true"
            #tabela>
-             <p-column field="pessoa" header="Nome/Razão Social"></p-column>
-             <p-column field="descricao" header="Descrição"></p-column>
-             <p-column header="Emissão" styleClass="col-data">
-                <ng-template let-lanc="rowData" pTemplate="body">
-                    <span>{{lanc.dataEmissao | date: 'dd/MM/yyyy'}}</span>
-                </ng-template>
-             </p-column>
-             <p-column header="Vencimento" styleClass="col-data">
-                <ng-template let-lanc="rowData" pTemplate="body">
-                    <span>{{lanc.dataVencimento | date: 'dd/MM/yyyy'}}</span>
-                </ng-template>
-             </p-column>
-             <p-column header="Pagamento" styleClass="col-data">
-                <ng-template let-lanc="rowData" pTemplate="body">
-                    <span>{{lanc.dataPagamento | date: 'dd/MM/yyyy'}}</span>
-                </ng-template>
-             </p-column>
-             <p-column field="valor" header="Valor" styleClass="col-valor">
-                <ng-template let-lanc="rowData" pTemplate="body">
-                    <span [style.color]="lanc.tipoLancamento === 'DESPESA' ? 'red' : 'blue'">{{ lanc.valor | number:'1.2-2' }}</span>
-                </ng-template>
-             </p-column>
-             <p-column field="tipoLancamento" header="Tipo"></p-column>
-             <p-column header="Ações" styleClass="col-acoes">
-               <ng-template let-lanc="rowData" pTemplate="body">
+           <ng-template pTemplate="header">
+             <tr>
+               <th>Nome/Razão Social</th>
+               <th>Descrição</th>
+               <th>Emissão</th>
+               <th>Vencimento</th>
+               <th>Pagamento</th>
+               <th class="col-valor-header">Valor</th>
+               <th class="col-tipo-header">Tipo</th>
+               <th>Ações</th>
+             </tr>
+           </ng-template>
+
+           <ng-template pTemplate="body" let-lancamento>
+             <tr>
+               <td>{{ lancamento.pessoa }}</td>
+               <td>{{ lancamento.descricao }}</td>
+               <td class="col-data">{{ lancamento.dataEmissao | date: 'dd/MM/yyyy' }}</td>
+               <td class="col-data">{{ lancamento.dataVencimento | date: 'dd/MM/yyyy' }}</td>
+               <td class="col-data">{{ lancamento.dataPagamento | date: 'dd/MM/yyyy' }}</td>
+               <td class="col-valor" [style.color]="lancamento.tipoLancamento === 'DESPESA' ? 'red' : 'blue'">
+                 {{ lancamento.valor | number:'1.2-2' }}
+               </td>
+               <td class="col-tipo">{{ lancamento.tipoLancamento }}</td>
+               <td class="col-acoes">
                   <button class="ui-button-success" pButton pTooltip="Baixar Conta" tooltipPosition="top" icon="fa-check-circle"></button>
-                 <button class="ui-button-warning" pButton pTooltip="Editar"
-                   tooltipPosition="top" icon="fa-pencil"
-                   [routerLink]="['/lancamentos', lanc.id]">
-                 </button>
-                 <button class="ui-button-danger" pButton pTooltip="Excluir"
-                    tooltipPosition="top" icon="fa-trash" (click)="confirmarExclusao(lanc)"
-                    [disabled]="!auth.temPermissao('ROLE_REMOVER_LANCAMENTO')">
-                 </button>
-               </ng-template>
-             </p-column>
-           </p-dataTable>
+                  <button class="ui-button-warning" pButton pTooltip="Editar"
+                    tooltipPosition="top" icon="fa-pencil"
+                    [routerLink]="['/lancamentos', lancamento.id]">
+                  </button>
+                  <button class="ui-button-danger" pButton pTooltip="Excluir"
+                     tooltipPosition="top" icon="fa-trash" (click)="confirmarExclusao(lancamento)"
+                     [disabled]="!auth.temPermissao('ROLE_REMOVER_LANCAMENTO')">
+                  </button>
+               </td>
+             </tr>
+           </ng-template>
+
+           <ng-template pTemplate="emptymessage">
+             <tr>
+               <td>
+                 Nenhum lançamento encontrado
+               </td>
+             </tr>
+           </ng-template>
+           </p-table>
         </div>
 
       </div>

@@ -15,6 +15,7 @@ import { ConfirmationService } from 'primeng/components/common/api';
 
 import { PessoaService } from './../pessoas/pessoa.service';
 import { LancamentoService } from './../lancamentos/lancamento.service';
+import { DashboardService } from './../dashboard/dashboard.service';
 import { AuthService } from '../seguranca/auth.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
@@ -41,6 +42,7 @@ import { NaoAutorizadoComponent } from './nao-autorizado.component';
       ErrorHandlerService,
       LancamentoService,
       PessoaService,
+      DashboardService,
       ConfirmationService,
       AuthService,
       JwtHelper,

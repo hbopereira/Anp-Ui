@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
 import { ButtonModule } from 'primeng/components/button/button';
-import { DataTableModule } from 'primeng/components/datatable/datatable';
+import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/components/tooltip/tooltip';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
@@ -36,7 +36,7 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     BrowserAnimationsModule,
     InputTextModule,
     ButtonModule,
-    DataTableModule,
+    TableModule,
     TooltipModule,
     InputTextareaModule,
     CalendarModule,
@@ -46,7 +46,8 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     FormsModule,
     InputMaskModule,
     SharedModule,
-    LancamentosRoutingModule
+    LancamentosRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     LancamentoCadastroComponent,

@@ -1,6 +1,6 @@
 
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -8,96 +8,88 @@
       </div>
 
       <div class="ui-g-12" align="center">
-          <label>{{tipo.value === 'RECEITA' ? 'Contas a receber' : 'Contas a pagar'}}</label>
+          <label>{{formulario.get('tipo').value === 'RECEITA' ? 'Contas a receber' : 'Contas a pagar'}}</label>
       </div>
 
       <div class="ui-g-12">
         <p-selectButton name="tipo" [options]="tipos"
-          [(ngModel)]="lancamento.tipo"
-          #tipo></p-selectButton>
+          formControlName="tipo"></p-selectButton>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Vencimento</label>
         <p-calendar name="vencimento" dateFormat="dd/mm/yy" [showIcon]="true"
           [inline]="false" [readonlyInput]="false" [showIcon]="false"
-          [(ngModel)]="lancamento.dataVencimento"
-          #vencimento="ngModel" required placeholder="Vencimento"></p-calendar>
+          formControlName="dataVencimento" placeholder="Vencimento"></p-calendar>
 
-        <app-message [control]="vencimento" error="required"
+        <app-message [control]="formulario.get('dataVencimento')" error="required"
           text="Informe uma data de vencimento"></app-message>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
-        <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
+        <label>{{ formulario.get('tipo').value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
         <p-calendar dateFormat="dd/mm/yy" [showIcon]="true" name="dataPagamento"
-          [(ngModel)]="lancamento.dataPagamento"></p-calendar>
+        formControlName="dataPagamento"></p-calendar>
       </div>
 
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label>Data Emissão</label>
         <p-calendar dateFormat="dd/mm/yy" [showIcon]="true" name="emissao"
-        [(ngModel)]="lancamento.dataEmissao"
-        #emissao="ngModel" required placeholder="Emissão"></p-calendar>
+        formControlName="dataEmissao" placeholder="Emissão"></p-calendar>
 
-        <app-message [control]="emissao" error="required"
+        <app-message [control]="formulario.get('dataEmissao')" error="required"
         text="Informe a data de Emissao"></app-message>
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Descrição</label>
         <input pInputText type="text" name="descricao"
-          [(ngModel)]="lancamento.descricao"
-          #descricao="ngModel" required minlength="5" placeholder="Informe a descrição">
+        formControlName="descricao" placeholder="Informe a descrição">
 
-        <app-message [control]="descricao" error="required"
-          text="Informe a descrição"></app-message>
-        <app-message [control]="descricao" error="minlength"
-          text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
+        <app-message [control]="formulario.get('descricao')" error="obrigatoriedade"
+          text="Informe a descrição (obrigatória)"></app-message>
+        <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid">
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="ocorrencia">
         <label>Ocorrencia</label>
         <p-dropdown name="ocorrencia" [options]="ocorrencias" placeholder="Selecione"
           [autoWidth]="false" [filter]="true"
-          [(ngModel)]="lancamento.ocorrencia.id"
-          required></p-dropdown>
+          formControlName="id"></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Valor</label>
         <input pInputText type="text" name="valor" placeholder="0,00"
           currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
-          [(ngModel)]="lancamento.valor"
-          required>
+          formControlName="valor">
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid">
+      <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="categoria">
         <label>Categoria</label>
         <p-dropdown name="categoria" [options]="categorias"
           placeholder="Selecione" [autoWidth]="false"
-          [(ngModel)]="lancamento.categoria.id"
-          required></p-dropdown>
+          formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-6 ui-fluid">
-        <label>{{tipo.value === 'RECEITA' ? 'Pessoa Física' : 'Pessoa Juridica'}}</label>
+      <div class="ui-g-12 ui-md-6 ui-fluid" formGroupName="pessoa">
+        <label>{{ formulario.get('tipo').value === 'RECEITA' ? 'Pessoa Física' : 'Pessoa Juridica'}}</label>
         <p-dropdown name="pessoa" [options]="pessoas" placeholder="Selecione"
           [autoWidth]="false" [filter]="true"
-          [(ngModel)]="lancamento.pessoa.id"
-          required></p-dropdown>
+          formControlName="id"></p-dropdown>
       </div>
 
       <div class="ui-g-12 ui-fluid">
         <label>Observação</label>
         <textarea pInputTextarea rows="3" name="observacao"
-          [(ngModel)]="lancamento.observacao" placeholder="Observação"></textarea>
+          formControlName="observacao" placeholder="Observação"></textarea>
       </div>
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo(f)"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
+        <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo()"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo()"></button>
         <button class="ui-button-success"  pButton type="button" routerLink="/lancamentos" label="Lançamentos"></button>
       </div>
     </div>
