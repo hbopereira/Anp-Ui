@@ -16,6 +16,9 @@ import { SegurancaModule } from './seguranca/seguranca.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { VendasModule } from './vendas/vendas.module';
+import { ProdutosModule } from './produtos/produtos.module';
+import { ProdutoService } from './produtos/produto.service';
 
 
 
@@ -25,7 +28,7 @@ registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,10 @@ registerLocaleData(localePt, 'pt-BR');
     DashboardModule,
     CoreModule,
     SegurancaModule,
+    VendasModule,
+    ProdutosModule,
     AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

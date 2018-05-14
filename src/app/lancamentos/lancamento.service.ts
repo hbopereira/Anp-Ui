@@ -77,10 +77,8 @@ export class LancamentoService {
   }
 
   excluir(id: number): Promise<void> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return this.http.delete(`${this.lancamentosUrl}/${id}`, { headers })
+    return this.http.delete(`${this.lancamentosUrl}/${id}`)
     .toPromise()
     .then(() => null);
 

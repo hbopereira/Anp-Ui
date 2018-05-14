@@ -2,18 +2,21 @@
   <div class="container">
     <div class="ui-g">
       <div class="ui-g-12">
-          <a title="Menu" class="navbar-toggle" (click)="exibindoMenu = ! exibindoMenu"><i class="fa fa-bars"></i></a>
+         <!-- <a title="Menu" class="navbar-toggle" (click)="exibindoMenu = ! exibindoMenu"><i class="fa fa-bars"></i></a> -->
       </div>
     </div>
   </div>
 
-  <ul class="navbar-menu" [hidden]="!exibindoMenu" *ngIf="mostrarMenu()">
+  <!--<ul class="navbar-menu" [hidden]="!exibindoMenu">
     <li class="navbar-usuario">{{ authService.jwtPayload?.nome }}</li>
     <li class="navbar-menuitem"><a routerLink="/lancamentos">Lançamentos</a></li>
     <li class="navbar-menuitem"><a routerLink="/pessoas">Pessoas</a></li>
+    <li class="navbar-menuitem"><a routerLink="/vendas">Vendas</a></li>
+    <li class="navbar-menuitem"><a routerLink="/produtos">Estoque</a></li>
     <li class="navbar-menuitem"><a>Relatórios</a></li>
+    <li class="navbar-menuitem"><a routerLink="/dashboard">Dashboard</a></li>
     <li class="navbar-menuitem"><a>Usuários</a></li>
-    <li class="navbar-menuitem"><a routerLink="/dashboard">Inicio</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Sair</a></li>
-  </ul>
+  </ul> -->
 </nav>
+

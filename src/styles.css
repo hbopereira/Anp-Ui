@@ -48,6 +48,14 @@ label{
   width: 120px;
 }
 
+.col-valorUnitario-header{
+  width: 120px;
+}
+
+.col-quantidade-header{
+  width: 120px;
+}
+
 .col-status{
   width: 120px;
   text-align: center;

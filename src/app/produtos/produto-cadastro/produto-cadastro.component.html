@@ -1,0 +1,156 @@
+
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1 align="center">{{ editando ? 'Edição de' : 'Novo' }} Produto</h1>
+      </div>
+
+      <div class="ui-g-12 ui-md-5 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao"
+        [(ngModel)]="produto.descricao"
+        #descricao="ngModel" required minlength="5" placeholder="Informe a descricao">
+
+        <app-message [control]="descricao" error="required"
+          text="Informe a descricao"></app-message>
+        <app-message [control]="descricao" error="minlength"
+          text="Mínimo de {{ descricao.errors?.minlength?.actualLength }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Valor Unitario</label>
+        <input pInputText type="text" name="valorUnitario" placeholder="0,00"
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+          [(ngModel)]="produto.valorUnitario" required>
+      </div>
+
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Marca</label>
+        <input pInputText type="text" name="marca"
+        [(ngModel)]="produto.marca"
+        #marca="ngModel" required  placeholder="Informe a marca">
+
+        <app-message [control]="marca" error="required"
+          text="Informe a marca"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Quantidade</label>
+        <input pInputText type="text" name="quantidade" placeholder="0"
+        [(ngModel)]="produto.quantidade"
+        #quantidade="ngModel" required>
+
+        <app-message [control]="quantidade" error="required"
+          text="Informe a quantidade"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Observação</label>
+        <textarea pInputTextarea rows="3" name="observacao"
+        [(ngModel)]="produto.observacao"
+         placeholder="Observação"></textarea>
+      </div>
+
+      <div class="ui-g-12">
+        <p-panel header="Fornecedores Produto">
+          <div class="ui-g">
+            <div class="ui-g-12">
+              <button pButton label="Novo" icon="fa-plus" type="button"
+               class="ui-button-success" (click)="prepararNovoFornecedor()"></button>
+            </div>
+            <div class="ui-g-12">
+              <p-table [value]="produto.fornecedores" [responsive]="true">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th class="col-acoes-header">Ações</th>
+                  </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-fornecedor let-rowIndex="rowIndex">
+                  <tr>
+                    <td>{{fornecedor.nome}}</td>
+                    <td>{{fornecedor.cnpj}}</td>
+                    <td>{{fornecedor.email}}</td>
+                    <td>{{fornecedor.telefone}}</td>
+                    <td class="col-acoes">
+                      <button class="ui-button-warning" pButton icon="fa-pencil" type="button"
+                      pTooltip="Editar" tooltipPosition="top"
+                      (click)="prepararEdicaoFornecedor(fornecedor, rowIndex)"></button>
+
+                      <button class="ui-button-danger" pButton icon="fa-trash" type="button"
+                      pTooltip="Excluir" tooltipPosition="top"
+                      (click)="confirmarExclusao(rowIndex)"></button>
+                    </td>
+                  </tr>
+                </ng-template>
+
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="4">
+                      Nenhum Contato Cadastrado
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </div>
+        </p-panel>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo(f)"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
+        <button class="ui-button-success"  pButton type="button" routerLink="/produtos" label="Produtos"></button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<p-dialog header="Novo Fornecedor" [(visible)]="exibindoFormularioFornecedor"
+ modal="modal" *ngIf="fornecedor">
+ <form #frmFornecedor="ngForm" (ngSubmit)="confirmarFornecedor(frmFornecedor)">
+   <div class="ui-g-12 ui-fluid">
+     <label>Nome/Razão Social</label>
+     <input pInputText type="text" name="nome"
+     required [(ngModel)]="fornecedor.nome" #fornecedorNome="ngModel"/>
+
+     <app-message [control]="fornecedorNome" error="required" text="Informe o nome"></app-message>
+   </div>
+
+   <div class="ui-g-12 ui-fluid">
+      <label>CNPJ</label>
+      <input pInputText type="text" name="cnpj"
+      required [(ngModel)]="fornecedor.cnpj" #fornecedorcnpj="ngModel"/>
+
+      <app-message [control]="fornecedorcnpj" error="required" text="Informe o cnpj"></app-message>
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+        <label>Email</label>
+        <input pInputText type="text" name="email"
+        required email [(ngModel)]="fornecedor.email" #fornecedorEmail="ngModel"/>
+
+        <app-message [control]="fornecedorEmail" error="required" text="Informe o email"></app-message>
+        <app-message [control]="fornecedorEmail" error="email" text="Informe um e-mail valido"></app-message>
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+        <label>Telefone</label>
+
+        <p-inputMask name="telefone" [(ngModel)]="fornecedor.telefone"
+        mask="(99) 99999-999?9"></p-inputMask>
+    </div>
+
+    <div class="ui-g-12">
+      <button pButton type="submit" label="confirmar" [disabled]="frmFornecedor.invalid"></button>
+    </div>
+ </form>
+</p-dialog>

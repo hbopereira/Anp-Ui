@@ -10,36 +10,20 @@
               <h3>Lançamentos Receitas/Despesas</h3>
           </div>
 
-          <div class="ui-g-4 ui-fluid">
+          <div class="ui-g-7 ui-md-7 ui-fluid">
             <label>Descrição</label>
             <input type="text" pInputText name="descricao"
             [(ngModel)]="filtroLancamento.descricao" placeholder="Informe uma descricao para a pesquisa">
           </div>
 
-          <div class="ui-g-4 ui-md-4 ui-fluid">
-              <label>Pessoa Física/Juridica</label>
-              <input type="text" pInputText placeholder="Informe um nome para a pesquisa">
-          </div>
-
-          <div class="ui-g-4 ui-md-4 ui-fluid">
-            <label>Tipo Ocorrencia</label>
-            <input type="text" pInputText name="tipoOcorrencia"
-            [(ngModel)]="filtroLancamento.tipoOcorrencia" placeholder="Informe uma ocorrência para a pesquisa">
-          </div>
-
-          <div class="ui-g-5 ui-md-5 ui-fluid">
-              <label>Tipo Lancamento</label>
-              <input type="text" pInputText placeholder="Informe um tipo de lançamento para a pesquisa">
-          </div>
-
-          <div class="ui-g-5 ui-md-5 ui-fluid">
+          <div class="ui-g-3 ui-md-3 ui-fluid">
               <label>Categoria</label>
               <input type="text" pInputText placeholder="Informe a categoria para pesquisa">
           </div>
 
-          <div class="ui-g-5 ui-md-2 ui-fluid">
+          <div class="ui-g-2 ui-md-2 ui-fluid">
               <label style="display: block">Data Emissão</label>
-              <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }" name="dataEmissao"
+              <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '150px' }" name="dataEmissao"
                [(ngModel)]="filtroLancamento.dataEmissao" placeholder="Emissão"></p-calendar>
           </div>
 

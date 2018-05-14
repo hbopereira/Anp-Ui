@@ -1,4 +1,5 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="mostrarMenu()"></app-navbar>
+<app-menu-drop *ngIf="mostrarMenuDrop()"></app-menu-drop>
 <router-outlet></router-outlet>
 
 <ng2-toasty></ng2-toasty>

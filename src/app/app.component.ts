@@ -9,8 +9,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private toastyConfig: ToastyConfig) {
+  constructor(private toastyConfig: ToastyConfig, private router: Router) {
     this.toastyConfig.theme = 'default';
+  }
+
+  mostrarMenuDrop() {
+    return this.router.url !== '/login';
+  }
+
+  mostrarMenu() {
+    return this.router.url === '/login';
   }
 
 }

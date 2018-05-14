@@ -1,0 +1,15 @@
+
+<!--<p-menubar [model]="items">
+    Olá, {{ authService.jwtPayload?.nome }}
+    <button pButton label="Sair" icon="fa-sign-out" (click)="logout()"></button>
+</p-menubar> -->
+
+
+<p-megaMenu [model]="items" id="menu">
+    <div class="a">
+        Olá, {{ authService.jwtPayload?.nome }}
+        <button pButton label="Sair" icon="fa-sign-out" (click)="logout()"></button>
+    </div>
+</p-megaMenu>
+
+

@@ -21,9 +21,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  mostrarMenu() {
-    return this.router.url !== '/login';
-  }
 
   novoAccessToken() {
     this.authService.obterNovoAccessToken();

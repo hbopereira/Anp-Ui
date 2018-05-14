@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { providers } from 'ng2-toasty';
 import { ErrorHandlerService } from './error-handler.service';
@@ -19,6 +20,10 @@ import { DashboardService } from './../dashboard/dashboard.service';
 import { AuthService } from '../seguranca/auth.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
+import { MenuDropComponent } from './menu-drop/menu-drop.component';
+import { ProdutoService } from './../produtos/produto.service';
+import { Menubar, MenubarModule } from 'primeng/menubar';
+import {MegaMenuModule} from 'primeng/megamenu';
 
 
 @NgModule({
@@ -26,23 +31,30 @@ import { NaoAutorizadoComponent } from './nao-autorizado.component';
     CommonModule,
     RouterModule,
     ToastyModule.forRoot(),
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MenubarModule,
+    MegaMenuModule
   ],
   declarations: [
     NavbarComponent,
     PaginaNaoEncontradaComponent,
-    NaoAutorizadoComponent
+    NaoAutorizadoComponent,
+    MenuDropComponent
   ],
   exports: [
     NavbarComponent,
+    MenuDropComponent,
     ToastyModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MenubarModule,
+    MegaMenuModule
   ],
   providers : [
       ErrorHandlerService,
       LancamentoService,
       PessoaService,
       DashboardService,
+      ProdutoService,
       ConfirmationService,
       AuthService,
       JwtHelper,

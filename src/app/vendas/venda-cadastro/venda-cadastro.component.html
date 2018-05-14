@@ -1,0 +1,82 @@
+<div class="container">
+    <form autocomplete="off">
+      <div class="ui-g">
+        <div class="ui-g-12">
+          <h1 align="center">Nova Venda</h1>
+        </div>
+        <div class="ui-g-12 ui-fluid">
+          <label>Cliente Pessoa Fisica/Juridica</label>
+          <p-dropdown placeholder="Selecione"[autoWidth]="false" [filter]="true" p-dropdown></p-dropdown>
+        </div>
+
+        <div class="ui-g-12 ui-fluid">
+          <label>Observação</label>
+          <textarea pInputTextarea rows="2" placeholder="Observação"></textarea>
+        </div>
+
+        <div class="ui-g-12">
+            <p-panel header="Produtos">
+              <div class="ui-g">
+                <div class="ui-g-11 ui-fluid">
+                    <label>Descrição Produto</label>
+                    <p-dropdown placeholder="Selecione"[autoWidth]="false" [filter]="true" p-dropdown></p-dropdown>
+                </div>
+                <div class="ui-g-1 ui-fluid">
+                    <label>quantidade</label>
+                    <input pInputText type="text">
+                </div>
+                <div class="ui-g-12">
+                  <p-table [responsive]="true">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Marca</th>
+                        <th>ValorUnitario</th>
+                        <th>Categoria</th>
+                        <th class="col-acoes-header">Ações</th>
+                      </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body">
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="col-acoes">
+                          <button class="ui-button-warning" pButton icon="fa-pencil" type="button"
+                          pTooltip="Editar" tooltipPosition="top"></button>
+
+                          <button class="ui-button-danger" pButton icon="fa-trash" type="button"
+                          pTooltip="Excluir" tooltipPosition="top"></button>
+                        </td>
+                      </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="emptymessage">
+                      <tr>
+                        <td colspan="4">
+                          Nenhum Produto Vinculado nesta venda
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+                </div>
+              </div>
+            </p-panel>
+            <div align="right">
+                <p>Valor Total</p>
+            </div>
+          </div>
+
+        <div class="ui-g-12">
+          <button pButton type="submit" label="Salvar"></button>
+          <button class="ui-button-warning" pButton type="submit" label="Cancelar"></button>
+          <button pButton type="button" label="Novo" class="ui-button-info"></button>
+          <button class="ui-button-success"  pButton type="button" routerLink="/vendas" label="Vendas"></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
