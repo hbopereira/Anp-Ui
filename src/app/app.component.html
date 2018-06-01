@@ -1,6 +1,15 @@
 <app-navbar *ngIf="mostrarMenu()"></app-navbar>
-<app-menu-drop *ngIf="mostrarMenuDrop()"></app-menu-drop>
+<app-menu-drop *ngIf="mostrarMenuDrop()" class="menu"></app-menu-drop>
+<br>
+<br>
 <router-outlet></router-outlet>
+<br>
+<br>
+<footer class="layout-rodape">
+    <div>
+      <p>&copy; 2018 ANP Soluções Digitais. Todos os direitos reservados.</p>
+    </div>
+</footer>
 
 <ng2-toasty></ng2-toasty>
 

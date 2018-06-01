@@ -19,6 +19,8 @@ export class ProdutoFiltro {
 @Injectable()
 export class ProdutoService {
   produtosUrl: string;
+  gruposUrl: string;
+  subGruposUrl: string;
 
   constructor(private http: AuthHttp) {
     this.produtosUrl = `${environment.apiUrl}/produtos`;
@@ -86,6 +88,23 @@ export class ProdutoService {
       .toPromise()
       .then(response => response.json() as Produto);
   }
+
+  /*listarGrupos(): Promise<Grupo[]> {
+    return this.http.get(this.gruposUrl)
+     .toPromise()
+     .then(response => response.json());
+  }
+
+  listarSubGrupos(grupo): Promise<Subgrupo[]> {
+    const params = new URLSearchParams();
+    params.set('grupo', grupo);
+
+    return this.http.get(this.subGruposUrl, {
+      search: params
+    })
+     .toPromise()
+     .then(response => response.json());
+  }*/
 
 }
 

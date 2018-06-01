@@ -19,6 +19,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { VendasModule } from './vendas/vendas.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { ProdutoService } from './produtos/produto.service';
+import { RelatoriosModule } from './relatorios/relatorios.module';
+
 
 
 
@@ -42,6 +44,7 @@ registerLocaleData(localePt, 'pt-BR');
     SegurancaModule,
     VendasModule,
     ProdutosModule,
+    RelatoriosModule,
     AppRoutingModule
 
   ],

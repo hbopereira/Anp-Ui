@@ -3,24 +3,23 @@
       <form autocomplete="false" (ngSubmit)="pesquisar()">
 
             <div align="center" class="ui-g-12">
-              <h1>Produtos</h1>
+              <h1>Pesquisa de Produtos</h1>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
+            <div class="ui-g-5 ui-md-5 ui-fluid">
+                <label>Codigo Barras</label>
+                <input pInputText type="text">
+            </div>
+
+            <div class="ui-g-5 ui-md-5 ui-fluid">
               <label>Descricão</label>
               <input pInputText type="text" name="descricao"
-              [(ngModel)]="filtroProduto.descricao" placeholder="Informe a descricao para pesquisa">
+              [(ngModel)]="filtroProduto.descricao">
             </div>
 
-            <div class="ui-g-4 ui-md-4 ui-fluid">
-                <label>Valor Unitario</label>
-                <input pInputText type="text" name="nome"
-                placeholder="informe o valor unitario para pesquisa ">
-            </div>
-
-            <div class="ui-g-4 ui-md-4 ui-fluid">
-                <label>Marca</label>
-                <input pInputText type="text" placeholder="informe a marca para pesquisa">
+            <div class="ui-g-2 ui-md-2 ui-fluid">
+                <label>Data Cadastro</label>
+                <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '150px' }" name="dataCadastro"></p-calendar>
             </div>
 
             <div class="ui-g-12">
@@ -42,22 +41,30 @@
 
         <ng-template pTemplate="header">
           <tr>
+            <th>Cód Barras</th>
             <th>Descricao</th>
-            <th>Marca</th>
-            <th class="col-valorUnitario-header">Valor Unitario</th>
-            <th class="col-quantidade-header">Quantidade</th>
-            <th>Observação</th>
+            <th>Aplicação</th>
+            <th>Cadastro</th>
+            <th>Custo(R$)</th>
+            <th class="col-valorUnitario-header">Valor Uni(R$)</th>
+            <th>Classe</th>
+            <th>Grupo</th>
+            <th>Medida</th>
             <th>Acões</th>
           </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-produto>
           <tr>
+            <td>{{produto.codigoBarras}}</td>
             <td>{{produto.descricao}}</td>
-            <td>{{produto.marca}}</td>
+            <td>{{produto.aplicacao}}</td>
+            <td>{{produto.dataCadastro}}</td>
+            <td>{{produto.custoMedio}}</td>
             <td class="col-valor">{{produto.valorUnitario | number:'1.2-2'}}</td>
-            <td>{{produto.quantidade}}</td>
-            <td>{{produto.observacao}}</td>
+            <td>{{produto.classe.nome}}</td>
+            <td>{{produto.grupo.nome}}</td>
+            <td>{{produto.unidadeMedida.descricao}}</td>
             <td class="col-acoes-pessoa">
               <button class="ui-button-warning" pButton icon="fa-pencil"
               [routerLink]="['/produtos', produto.id]" pTooltip="Editar" tooltipPosition="top">
@@ -85,6 +92,8 @@
   <div class="ui-g-12">
       <a class="ui-button-success" icon="fa-plus" routerLink="/produtos/novo" pButton label="Novo Produto"></a>
   </div>
+  <br>
+  <br>
 </div>
 
 

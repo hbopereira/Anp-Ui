@@ -26,6 +26,30 @@ export class Ocorrencia {
 id: number;
 }
 
+export class Tipo {
+id: number;
+}
+
+export class UnidadeMedida {
+  id: number;
+}
+
+export class Grupo {
+  id: number;
+}
+
+export class SubGrupo {
+  id: number;
+}
+
+export class Classe {
+  id: number;
+}
+
+export class Marca {
+  id: number;
+}
+
 export class Fornecedor {
   id: number;
   nome: string;
@@ -49,11 +73,25 @@ export class Fornecedor {
 
 export class Produto {
   id: number;
+  codigoBarras: string;
+  controlaEstoque = true;
+  estoqueMinimo: number;
+  estoqueMaximo: number;
+  ultimoCusto: number;
+  custoMedio: number;
   descricao: string;
+  aplicacao: string;
   valorUnitario: number;
-  marca: String;
-  quantidade: number;
+  dataCadastro: string;
+  dataModificacao: string;
+  ativo = true;
   observacao: String;
+  tipo = new Tipo();
+  unidadeMedida = new UnidadeMedida();
+  classe = new Classe();
+  marca = new Marca();
+  grupo = new Grupo();
+  subGrupo = new SubGrupo();
   fornecedores = new Array<Fornecedor>();
 
 }

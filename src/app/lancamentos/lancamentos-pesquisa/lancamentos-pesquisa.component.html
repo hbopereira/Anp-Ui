@@ -3,22 +3,17 @@
       <form autocomplete="false" (ngSubmit)="pesquisar()">
 
           <div align="center" class="ui-g-12">
-            <h1>Lançamentos</h1>
+            <h1>Pesquisa de Lançamentos</h1>
           </div>
 
           <div align="center" class="ui-g-12">
               <h3>Lançamentos Receitas/Despesas</h3>
           </div>
 
-          <div class="ui-g-7 ui-md-7 ui-fluid">
+          <div class="ui-g-10 ui-md-10 ui-fluid">
             <label>Descrição</label>
             <input type="text" pInputText name="descricao"
-            [(ngModel)]="filtroLancamento.descricao" placeholder="Informe uma descricao para a pesquisa">
-          </div>
-
-          <div class="ui-g-3 ui-md-3 ui-fluid">
-              <label>Categoria</label>
-              <input type="text" pInputText placeholder="Informe a categoria para pesquisa">
+            [(ngModel)]="filtroLancamento.descricao">
           </div>
 
           <div class="ui-g-2 ui-md-2 ui-fluid">
@@ -107,7 +102,8 @@
     <div class="ui-g">
         <a class="ui-button-success" routerLink="/lancamentos/novo" label="Novo lancamento" pButton></a>
     </div>
-
+    <br>
+    <br>
   </div>
 
 

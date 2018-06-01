@@ -24,6 +24,13 @@ import { MenuDropComponent } from './menu-drop/menu-drop.component';
 import { ProdutoService } from './../produtos/produto.service';
 import { Menubar, MenubarModule } from 'primeng/menubar';
 import {MegaMenuModule} from 'primeng/megamenu';
+import { RelatoriosService } from '../relatorios/relatorio.service';
+import { TipoService } from '../tipos/tipo.service';
+import { UnidadeMedidaService } from '../unidades-medida/unidade-medida.service';
+import { GrupoService } from '../grupo/grupo.service';
+import { SubgrupoService } from '../subgrupo/subgrupo.service';
+import { ClasseService } from '../classe/classe.service';
+import { MarcaService } from '../marca/marca.service';
 
 
 @NgModule({
@@ -55,6 +62,13 @@ import {MegaMenuModule} from 'primeng/megamenu';
       PessoaService,
       DashboardService,
       ProdutoService,
+      TipoService,
+      UnidadeMedidaService,
+      GrupoService,
+      SubgrupoService,
+      ClasseService,
+      MarcaService,
+      RelatoriosService,
       ConfirmationService,
       AuthService,
       JwtHelper,

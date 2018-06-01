@@ -5,11 +5,11 @@
 </p-menubar> -->
 
 
-<p-megaMenu [model]="items" id="menu">
+<p-menubar [model]="items" id="menu">
     <div class="a">
         Olá, {{ authService.jwtPayload?.nome }}
         <button pButton label="Sair" icon="fa-sign-out" (click)="logout()"></button>
     </div>
-</p-megaMenu>
+</p-menubar>
 
 

@@ -1,59 +1,127 @@
 
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  <form autocomplete="off" (ngSubmit)="salvar()" [formGroup]="formulario">
 
     <div class="ui-g">
       <div class="ui-g-12">
         <h1 align="center">{{ editando ? 'Edição de' : 'Novo' }} Produto</h1>
       </div>
 
-      <div class="ui-g-12 ui-md-5 ui-fluid">
-        <label>Descrição</label>
-        <input pInputText type="text" name="descricao"
-        [(ngModel)]="produto.descricao"
-        #descricao="ngModel" required minlength="5" placeholder="Informe a descricao">
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Código Barras</label>
+        <input pInputText type="text" name="codigoBarras"
+        formControlName="codigoBarras">
 
-        <app-message [control]="descricao" error="required"
-          text="Informe a descricao"></app-message>
-        <app-message [control]="descricao" error="minlength"
-          text="Mínimo de {{ descricao.errors?.minlength?.actualLength }} caracteres"></app-message>
+        <app-message [control]="formulario.get('codigoBarras')" error="obrigatoriedade"
+          text="Informe o codigo de barras (obrigatória)"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid">
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao"
+        formControlName="descricao">
+
+        <app-message [control]="formulario.get('descricao')" error="obrigatoriedade"
+          text="Informe a descrição (obrigatória)"></app-message>
+        <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Aplicação</label>
+        <input pInputText type="text" name="aplicacao"
+        formControlName="aplicacao">
+
+        <app-message [control]="formulario.get('aplicacao')" error="obrigatoriedade"
+          text="Informe a aplicacao (obrigatória)"></app-message>
+        <app-message [control]="formulario.get('aplicacao')" error="tamanhoMinimo"
+          text="Mínimo de {{ formulario.get('aplicacao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
+      </div>
+
+
+      <div class="ui-g-12 ui-md-2 ui-fluid" formGroupName="tipo">
+        <label>Tipo de Estoque</label>
+        <p-dropdown name="tipo" [options]="tipos" placeholder="Selecione"
+        [autoWidth]="false" [filter]="true"
+        formControlName="id"></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-2 ui-fluid">
         <label>Valor Unitario</label>
         <input pInputText type="text" name="valorUnitario" placeholder="0,00"
           currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
-          [(ngModel)]="produto.valorUnitario" required>
+          formControlName="valorUnitario">
       </div>
 
       <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Custo Médio</label>
+        <input [disabled]="true" pInputText type="text" name="custoMedio" placeholder="0,00"
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+          formControlName="custoMedio">
+      </div>
+
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Ultimo Custo</label>
+        <input pInputText type="text" name="ultimoCusto" placeholder="0,00"
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+          formControlName="ultimoCusto">
+      </div>
+
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Estoque Minimo</label>
+        <input pInputText type="text" name="estoqueMinimo" placeholder="0"
+          formControlName="estoqueMinimo">
+      </div>
+
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Estoque Máximo</label>
+        <input pInputText type="text" name="estoqueMaximo" placeholder="0"
+          formControlName="estoqueMaximo">
+      </div>
+
+      <div class="ui-g-12 ui-md-2 ui-fluid" formGroupName="unidadeMedida">
+        <label>Unidade Medida</label>
+        <p-dropdown name="unidadeMedida" [options]="unidadesMedida" placeholder="Selecione"
+        [autoWidth]="false" [filter]="true"
+        formControlName="id"></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
+        <label>Classe</label>
+        <p-dropdown name="classe" [options]="classes" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="marca">
         <label>Marca</label>
-        <input pInputText type="text" name="marca"
-        [(ngModel)]="produto.marca"
-        #marca="ngModel" required  placeholder="Informe a marca">
-
-        <app-message [control]="marca" error="required"
-          text="Informe a marca"></app-message>
+        <p-dropdown name="marca" [options]="marcas" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid">
-        <label>Quantidade</label>
-        <input pInputText type="text" name="quantidade" placeholder="0"
-        [(ngModel)]="produto.quantidade"
-        #quantidade="ngModel" required>
-
-        <app-message [control]="quantidade" error="required"
-          text="Informe a quantidade"></app-message>
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="grupo">
+        <label>Grupo</label>
+        <p-dropdown name="grupo" [options]="grupos" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
       </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
+        <label>Subgrupo</label>
+        <p-dropdown name="subGrupo" [options]="subGrupos" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
+      </div>
+
 
       <div class="ui-g-12 ui-fluid">
         <label>Observação</label>
         <textarea pInputTextarea rows="3" name="observacao"
-        [(ngModel)]="produto.observacao"
-         placeholder="Observação"></textarea>
+        formControlName="observacao" placeholder="Observação"></textarea>
       </div>
 
-      <div class="ui-g-12">
+      <!--<div class="ui-g-12">
         <p-panel header="Fornecedores Produto">
           <div class="ui-g">
             <div class="ui-g-12">
@@ -93,7 +161,7 @@
                 <ng-template pTemplate="emptymessage">
                   <tr>
                     <td colspan="4">
-                      Nenhum Contato Cadastrado
+                      Nenhum Fornecedor Cadastrado
                     </td>
                   </tr>
                 </ng-template>
@@ -101,12 +169,12 @@
             </div>
           </div>
         </p-panel>
-      </div>
+      </div> -->
 
       <div class="ui-g-12">
-        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo(f)"></button>
-        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo(f)"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
+        <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo()"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" (click)="novo()"></button>
         <button class="ui-button-success"  pButton type="button" routerLink="/produtos" label="Produtos"></button>
       </div>
     </div>
@@ -114,7 +182,7 @@
   </form>
 </div>
 
-<p-dialog header="Novo Fornecedor" [(visible)]="exibindoFormularioFornecedor"
+<!--<p-dialog header="Novo Fornecedor" [(visible)]="exibindoFormularioFornecedor"
  modal="modal" *ngIf="fornecedor">
  <form #frmFornecedor="ngForm" (ngSubmit)="confirmarFornecedor(frmFornecedor)">
    <div class="ui-g-12 ui-fluid">
@@ -153,4 +221,4 @@
       <button pButton type="submit" label="confirmar" [disabled]="frmFornecedor.invalid"></button>
     </div>
  </form>
-</p-dialog>
+</p-dialog> -->

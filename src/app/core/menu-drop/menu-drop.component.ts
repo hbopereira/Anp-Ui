@@ -24,156 +24,88 @@ export class MenuDropComponent implements OnInit {
   ngOnInit() {
 
     this.items = [
-      {
-          label: 'Estoque',
-          items: [
-              [
-                  {
-                      label: 'Produto',
-                      items: [{label: 'Novo Produto', icon: 'fa-plus', routerLink: 'produtos/novo'},
-                      {label: 'Produtos', icon: 'fa-search', routerLink: '/produtos'}]
-                  },
-                 /* {
-                      label: 'TV 2',
-                      items: [{label: 'TV 2.1'},
-                      {label: 'TV 2.2'}]
-                  }
-              ],
-              [
-                  {
-                      label: 'TV 3',
-                      items: [{label: 'TV 3.1'},
-                      {label: 'TV 3.2'}]
-                  },
-                  {
-                      label: 'TV 4',
-                      items: [{label: 'TV 4.1'},
-                      {label: 'TV 4.2'}]
-                  },*/
-              ]
+     /* {
+          label: 'Arquivo',
+          items: [{
+                  label: 'Empresa',
+                  items: [
+                      {label: 'Logoff', icon: 'fa-search'},
+                      {label: 'Troca Empresa', icon: 'fa-search'},
+                      {label: 'Backup', icon: 'fa-search'},
+                      {label: 'Empresa', icon: 'fa-search'},
+                  ]
+              },
           ]
-      },
+      },*/
       {
-          label: 'Financeiro',
-          items: [
-              [
-                  {
-                      label: 'Lançamento',
-                      items: [{label: 'Novo Lançamento', icon: 'fa-plus', routerLink: 'lancamentos/novo'},
-                      {label: 'Lançamentos', icon: 'fa-search', routerLink: '/lancamentos'}]
-                  },
-                  {
-                    label: 'Dashboard Lançamentos',
-                    items: [{label: 'Dashboard', routerLink: '/dashboard'}]
-                  },
-              ],
-              [
-                  /*{
-                      label: 'Sports 4',
-                      items: [{label: 'Sports 4.1'},
-                      {label: 'Sports 4.2'}]
-                  }*/
-              ],
-             /* [
-                  {
-                      label: 'Sports 5',
-                      items: [{label: 'Sports 5.1'},
-                      {label: 'Sports 5.2'}]
-                  },
-                  {
-                      label: 'Sports 6',
-                      items: [{label: 'Sports 6.1'},
-                      {label: 'Sports 6.2'}]
-                  }
-              ] */
-          ]
-      },
-      {
-        label: 'Comercial',
-        items: [
-            [
-                {
-                    label: 'Venda',
-                    items: [{label: 'Nova Venda', icon: 'fa-plus', routerLink: 'vendas/nova'},
-                    {label: 'Vendas', icon: 'fa-search', routerLink: '/vendas'}]
-                },
-               /* {
-                    label: 'TV 2',
-                    items: [{label: 'TV 2.1'},
-                    {label: 'TV 2.2'}]
-                }
-            ],
-            [
-                {
-                    label: 'TV 3',
-                    items: [{label: 'TV 3.1'},
-                    {label: 'TV 3.2'}]
-                },
-                {
-                    label: 'TV 4',
-                    items: [{label: 'TV 4.1'},
-                    {label: 'TV 4.2'}]
-                },*/
-            ]
-        ]
-    },
-    {
-      label: 'Administrativo',
-      items: [
-          [
-            {
-              label: 'Pessoa Fisica/Juridica',
-              items: [{label: 'Nova Pessoa', icon: 'fa-plus', routerLink: 'pessoas/nova'},
-              {label: 'Pessoas', icon: 'fa-search', routerLink: '/pessoas'}]
+        label: 'Administrativo',
+        items: [{
+                label: 'Pessoa F/J',
+                items: [
+                    {label: 'Nova Pessoa', icon: 'fa-plus', routerLink: 'pessoas/nova'},
+                    {label: 'Pessoas', icon: 'fa-search', routerLink: 'pessoas'}
+                ]
             },
-             /* {
-                  label: 'TV 2',
-                  items: [{label: 'TV 2.1'},
-                  {label: 'TV 2.2'}]
-              }
-          ],
-          [
-              {
-                  label: 'TV 3',
-                  items: [{label: 'TV 3.1'},
-                  {label: 'TV 3.2'}]
-              },
-              {
-                  label: 'TV 4',
-                  items: [{label: 'TV 4.1'},
-                  {label: 'TV 4.2'}]
-              },*/
-          ]
-      ]
-  },
-    {
-      label: 'Relatorios',
-      items: [
-          [
-              {
-                  label: 'Financeiro',
-                  items: [{label: 'Lancamentos por tipo pessoa', icon: 'fa-search'}]
-              },
-             /* {
-                  label: 'TV 2',
-                  items: [{label: 'TV 2.1'},
-                  {label: 'TV 2.2'}]
-              }
-          ],
-          [
-              {
-                  label: 'TV 3',
-                  items: [{label: 'TV 3.1'},
-                  {label: 'TV 3.2'}]
-              },
-              {
-                  label: 'TV 4',
-                  items: [{label: 'TV 4.1'},
-                  {label: 'TV 4.2'}]
-              },*/
-          ]
-      ]
-  },
+            {
+                label: 'Produto',
+                items: [
+                    {label: 'Novo Produto', icon: 'fa-plus', routerLink: 'produtos/novo'},
+                    {label: 'Produtos', icon: 'fa-search', routerLink: 'produtos'},
+                    {separator: true},
+                    { label: 'Classes', icon: 'fa-search'},
+                    {separator: true},
+                    { label: 'Marcas', icon: 'fa-search'},
+                    {separator: true},
+                    { label: 'Grupos', icon: 'fa-search'},
+                    {separator: true},
+                    { label: 'Subgrupos', icon: 'fa-search'},
+                ]
+            },
+        ]
+      },
+     /* {
+        label: 'Operacional',
+        items: [{
+                label: 'Movimentação',
+                items: [
+                    {label: 'Vendas', icon: 'fa-search', routerLink: 'vendas'},
+                    {label: 'Serviços', icon: 'fa-search'},
+                    {label: 'Compras', icon: 'fa-search'}
+                ]
+            },
+            {
+                label: 'Estoque',
+                items: [
+                    {label: 'Movimentação Estoque', icon: 'fa-search'}
+                ]
+            },
+        ]
+      }, */
+      {
+        label: 'Financeiro',
+        items: [{
+                label: 'Lançamento',
+                items: [
+                    {label: 'Novo Lançamento', icon: 'fa-plus', routerLink: 'lancamentos/novo'},
+                    {label: 'Lançamentos', icon: 'fa-search', routerLink: 'lancamentos'}
+                ]
+            },
+            {
+              label: 'Dashboard', routerLink: 'dashboard'
+            }
+        ]
+      },
+      {
+        label: 'Relatórios',
+        items: [{
+                label: 'Financeiro',
+                items: [
+                    {label: 'Lançamentos por Pessoa F/J', icon: 'fa-search', routerLink: 'relatorio-por-pessoa'},
+                    {label: 'Lançamentos por Categoria', icon: 'fa-search'}
+                ]
+            },
+        ]
+      },
   ];
   }
 
