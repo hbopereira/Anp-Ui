@@ -56,7 +56,7 @@ export class MenuDropComponent implements OnInit {
                     {separator: true},
                     { label: 'Grupos', icon: 'fa-search'},
                     {separator: true},
-                    { label: 'Subgrupos', icon: 'fa-search'},
+                    { label: 'Subrupos', icon: 'fa-search'},
                 ]
             },
         ]

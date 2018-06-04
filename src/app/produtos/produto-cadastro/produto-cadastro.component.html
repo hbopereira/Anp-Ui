@@ -91,7 +91,7 @@
         <p-dropdown name="classe" [options]="classes" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
-          <button type="button" routerLink="/classes/nova">Novo</button>
+          <button type="button" (click)="prepararNovaClasse()">Nova</button>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="marca">
@@ -99,7 +99,7 @@
         <p-dropdown name="marca" [options]="marcas" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
-          <button type="button"  routerLink="/marcas/nova">Novo</button>
+          <button type="button"  (click)="prepararNovaMarca()">Nova</button>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="grupo">
@@ -107,7 +107,7 @@
         <p-dropdown name="grupo" [options]="grupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
-          <button type="button"  routerLink="/grupos/novo">Novo</button>
+          <button type="button" (click)="prepararNovoGrupo()">Novo</button>
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
@@ -115,7 +115,7 @@
         <p-dropdown name="subGrupo" [options]="subGrupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
-          <button type="button" routerLink="/subgrupos/novo">Novo</button>
+          <button type="button" (click)="prepararNovoSubgrupo()">Novo</button>
       </div>
 
 
@@ -237,3 +237,75 @@
     </div>
  </form>
 </p-dialog> -->
+
+<p-dialog header="Nova Classe" [(visible)]="exibindoFormularioClasse"
+ modal="modal" *ngIf="classe">
+ <form #frmClasse="ngForm" (ngSubmit)="adicionarClasse(frmClasse)">
+   <div class="ui-g-12 ui-fluid">
+    <label>Nome</label>
+    <input pInputText type="text" name="nome"
+    required [(ngModel)]="classe.nome" #nome="ngModel"/>
+
+    <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
+   </div>
+
+   <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="frmClasse.invalid"></button>
+   </div>
+  </form>
+
+</p-dialog>
+
+<p-dialog header="Nova Marca" [(visible)]="exibindoFormularioMarca"
+ modal="modal" *ngIf="marca">
+ <form #frmMarca="ngForm" (ngSubmit)="adicionarMarca(frmMarca)">
+   <div class="ui-g-12 ui-fluid">
+    <label>Nome</label>
+    <input pInputText type="text" name="nome"
+    required [(ngModel)]="marca.nome" #nome="ngModel"/>
+
+    <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
+   </div>
+
+   <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="frmMarca.invalid"></button>
+   </div>
+  </form>
+
+</p-dialog>
+
+<p-dialog header="Novo Grupo" [(visible)]="exibindoFormularioGrupo"
+ modal="modal" *ngIf="grupo">
+ <form #frmGrupo="ngForm" (ngSubmit)="adicionarGrupo(frmGrupo)">
+   <div class="ui-g-12 ui-fluid">
+    <label>Nome</label>
+    <input pInputText type="text" name="nome"
+    required [(ngModel)]="grupo.nome" #nome="ngModel"/>
+
+    <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
+   </div>
+
+   <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="frmGrupo.invalid"></button>
+   </div>
+  </form>
+
+</p-dialog>
+
+<p-dialog header="Novo Subgrupo" [(visible)]="exibindoFormularioSubgrupo"
+ modal="modal" *ngIf="subGrupo">
+ <form #frmSubgrupo="ngForm" (ngSubmit)="adicionarSubgrupo(frmSubgrupo)">
+   <div class="ui-g-12 ui-fluid">
+    <label>Nome</label>
+    <input pInputText type="text" name="nome"
+    required [(ngModel)]="subGrupo.nome" #nome="ngModel"/>
+
+    <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
+   </div>
+
+   <div class="ui-g-12">
+      <button pButton type="submit" label="Salvar" [disabled]="frmSubgrupo.invalid"></button>
+   </div>
+  </form>
+
+</p-dialog>

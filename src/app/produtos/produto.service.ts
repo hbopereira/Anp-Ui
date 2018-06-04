@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, URLSearchParams } from '@angular/http';
 import { AuthHttp } from 'angular2-jwt';
 
-import { Produto } from './../core/model';
+import { Produto, Classe, Marca, Grupo, SubGrupo } from './../core/model';
 
 import { environment } from '../../environments/environment';
 
@@ -19,17 +19,55 @@ export class ProdutoFiltro {
 @Injectable()
 export class ProdutoService {
   produtosUrl: string;
+  classesUrl: string;
+  marcasUrl: string;
   gruposUrl: string;
-  subGruposUrl: string;
+  subgruposUrl: string;
 
   constructor(private http: AuthHttp) {
     this.produtosUrl = `${environment.apiUrl}/produtos`;
+    this.classesUrl = `${environment.apiUrl}/classes`;
+    this.marcasUrl = `${environment.apiUrl}/marcas`;
+    this.gruposUrl = `${environment.apiUrl}/grupos`;
+    this.subgruposUrl = `${environment.apiUrl}/subgrupos`;
    }
 
   adicionar(produto: Produto): Promise<Produto> {
 
     return this.http.post(this.produtosUrl,
        JSON.stringify(produto))
+      .toPromise()
+      .then(response => response.json());
+  }
+
+  adicionarClasse(classe: Classe): Promise<Classe> {
+
+    return this.http.post(this.classesUrl,
+       JSON.stringify(classe))
+      .toPromise()
+      .then(response => response.json());
+  }
+
+  adicionarMarca(marca: Marca): Promise<Marca> {
+
+    return this.http.post(this.marcasUrl,
+       JSON.stringify(marca))
+      .toPromise()
+      .then(response => response.json());
+  }
+
+  adicionarGrupo(grupo: Grupo): Promise<Grupo> {
+
+    return this.http.post(this.gruposUrl,
+       JSON.stringify(grupo))
+      .toPromise()
+      .then(response => response.json());
+  }
+
+  adicionarSubgrupo(subgrupo: SubGrupo): Promise<SubGrupo> {
+
+    return this.http.post(this.subgruposUrl,
+       JSON.stringify(subgrupo))
       .toPromise()
       .then(response => response.json());
   }

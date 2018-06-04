@@ -8,7 +8,7 @@ import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from './../../core/error-handler.service';
 
 import { ProdutoService } from './../produto.service';
-import { Produto, Fornecedor } from './../../core/model';
+import { Produto, Fornecedor, Classe, Marca, Grupo, SubGrupo } from './../../core/model';
 import { ConfirmationService } from 'primeng/api';
 import { TipoService } from '../../tipos/tipo.service';
 import { UnidadeMedidaService } from '../../unidades-medida/unidade-medida.service';
@@ -25,6 +25,10 @@ import { MarcaService } from '../../marca/marca.service';
 })
 export class ProdutoCadastroComponent implements OnInit {
   produto = new Produto();
+  classe = new Classe();
+  marca = new Marca();
+  grupo = new Grupo();
+  subGrupo = new SubGrupo();
   classes = [];
   marcas = [];
   tipos = [];
@@ -34,6 +38,11 @@ export class ProdutoCadastroComponent implements OnInit {
   formulario: FormGroup;
 
   exibindoFormularioFornecedor = false;
+  exibindoFormularioClasse = false;
+  exibindoFormularioMarca = false;
+  exibindoFormularioGrupo = false;
+  exibindoFormularioSubgrupo = false;
+
   fornecedor: Fornecedor;
   fornecedorIndex: number;
 
@@ -68,6 +77,22 @@ export class ProdutoCadastroComponent implements OnInit {
     this.carregarMarcas();
     this.carregarGrupos();
     this.carregarSubgrupos();
+  }
+
+  prepararNovaClasse() {
+    this.exibindoFormularioClasse = true;
+  }
+
+  prepararNovaMarca() {
+    this.exibindoFormularioMarca = true;
+  }
+
+  prepararNovoGrupo() {
+    this.exibindoFormularioGrupo = true;
+  }
+
+  prepararNovoSubgrupo() {
+    this.exibindoFormularioSubgrupo = true;
   }
 
   /*prepararNovoFornecedor() {
@@ -176,6 +201,46 @@ export class ProdutoCadastroComponent implements OnInit {
       .then(produto => {
         this.toasty.success('Produto adicionado com sucesso!');
         this.router.navigate(['/produtos', produto.id]);
+      })
+      .catch(erro => this.errorHandler.handleError(erro));
+  }
+
+  adicionarClasse(form: FormControl) {
+    this.produtoService.adicionarClasse(this.classe)
+      .then(classe => {
+        this.exibindoFormularioClasse = false;
+        form.reset();
+        this.toasty.success('Classe adicionada com sucesso!');
+      })
+      .catch(erro => this.errorHandler.handleError(erro));
+  }
+
+  adicionarMarca(form: FormControl) {
+    this.marcaService.adicionar(this.marca)
+      .then(marca => {
+        this.exibindoFormularioMarca = false;
+        form.reset();
+        this.toasty.success('Marca adicionada com sucesso!');
+      })
+      .catch(erro => this.errorHandler.handleError(erro));
+  }
+
+  adicionarGrupo(form: FormControl) {
+    this.grupoService.adicionar(this.grupo)
+      .then(grupo => {
+        this.exibindoFormularioGrupo = false;
+        form.reset();
+        this.toasty.success('Grupo adicionado com sucesso!');
+      })
+      .catch(erro => this.errorHandler.handleError(erro));
+  }
+
+  adicionarSubgrupo(form: FormControl) {
+    this.subgrupoService.adicionar(this.subGrupo)
+      .then(subGrupo => {
+        this.exibindoFormularioSubgrupo = false;
+        form.reset();
+        this.toasty.success('Subgrupo adicionado com sucesso!');
       })
       .catch(erro => this.errorHandler.handleError(erro));
   }

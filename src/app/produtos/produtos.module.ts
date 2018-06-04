@@ -31,6 +31,7 @@ import { CalendarModule } from 'primeng/calendar';
   imports: [
     CommonModule,
     ProdutoRoutingModule,
+    DialogModule,
     CommonModule,
     TooltipModule,
     ButtonModule,
