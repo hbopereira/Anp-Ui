@@ -20,6 +20,10 @@ import { VendasModule } from './vendas/vendas.module';
 import { ProdutosModule } from './produtos/produtos.module';
 import { ProdutoService } from './produtos/produto.service';
 import { RelatoriosModule } from './relatorios/relatorios.module';
+import { ClasseModule } from './classe/classe.module';
+import { MarcaModule } from './marca/marca.module';
+import { GrupoModule } from './grupo/grupo.module';
+import { SubgrupoModule } from './subgrupo/subgrupo.module';
 
 
 
@@ -45,6 +49,10 @@ registerLocaleData(localePt, 'pt-BR');
     VendasModule,
     ProdutosModule,
     RelatoriosModule,
+    ClasseModule,
+    MarcaModule,
+    GrupoModule,
+    SubgrupoModule,
     AppRoutingModule
 
   ],

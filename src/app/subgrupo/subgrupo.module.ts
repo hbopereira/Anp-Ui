@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MarcaCadastroComponent } from './marca-cadastro/marca-cadastro.component';
-import { MarcaPesquisaComponent } from './marca-pesquisa/marca-pesquisa.component';
+import { SubgrupoCadastroComponent } from './subgrupo-cadastro/subgrupo-cadastro.component';
+import { SubgrupoPesquisaComponent } from './subgrupo-pesquisa/subgrupo-pesquisa.component';
+import { SubgrupoRoutingModule } from './subgrupo-routing.module';
 import { InputTextModule } from 'primeng/components/inputtext/inputtext';
 import { ButtonModule } from 'primeng/components/button/button';
 import { TableModule } from 'primeng/table';
@@ -10,7 +11,6 @@ import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton
 import { FormsModule } from '@angular/forms';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { SharedModule } from '../shared/shared.module';
-import { MarcaRoutingModule } from './marcas-routing.module';
 
 @NgModule({
   imports: [
@@ -23,8 +23,8 @@ import { MarcaRoutingModule } from './marcas-routing.module';
     FormsModule,
     InputMaskModule,
     SharedModule,
-    MarcaRoutingModule
+    SubgrupoRoutingModule
   ],
-  declarations: [MarcaCadastroComponent, MarcaPesquisaComponent]
+  declarations: [SubgrupoCadastroComponent, SubgrupoPesquisaComponent]
 })
-export class MarcaModule { }
+export class SubgrupoModule { }

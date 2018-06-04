@@ -36,18 +36,22 @@ export class UnidadeMedida {
 
 export class Grupo {
   id: number;
+  nome: string;
 }
 
 export class SubGrupo {
   id: number;
+  nome: string;
 }
 
 export class Classe {
   id: number;
+  nome: string;
 }
 
 export class Marca {
   id: number;
+  nome: string;
 }
 
 export class Fornecedor {

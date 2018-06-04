@@ -42,17 +42,15 @@ export class MenuDropComponent implements OnInit {
         items: [{
                 label: 'Pessoa F/J',
                 items: [
-                    {label: 'Nova Pessoa', icon: 'fa-plus', routerLink: 'pessoas/nova'},
                     {label: 'Pessoas', icon: 'fa-search', routerLink: 'pessoas'}
                 ]
             },
             {
                 label: 'Produto',
                 items: [
-                    {label: 'Novo Produto', icon: 'fa-plus', routerLink: 'produtos/novo'},
                     {label: 'Produtos', icon: 'fa-search', routerLink: 'produtos'},
                     {separator: true},
-                    { label: 'Classes', icon: 'fa-search'},
+                    { label: 'Classes', icon: 'fa-search', routerLink: 'classes'},
                     {separator: true},
                     { label: 'Marcas', icon: 'fa-search'},
                     {separator: true},
@@ -63,13 +61,15 @@ export class MenuDropComponent implements OnInit {
             },
         ]
       },
-     /* {
+      {
         label: 'Operacional',
         items: [{
                 label: 'Movimentação',
                 items: [
                     {label: 'Vendas', icon: 'fa-search', routerLink: 'vendas'},
+                    {separator: true},
                     {label: 'Serviços', icon: 'fa-search'},
+                    {separator: true},
                     {label: 'Compras', icon: 'fa-search'}
                 ]
             },
@@ -80,7 +80,7 @@ export class MenuDropComponent implements OnInit {
                 ]
             },
         ]
-      }, */
+      },
       {
         label: 'Financeiro',
         items: [{
