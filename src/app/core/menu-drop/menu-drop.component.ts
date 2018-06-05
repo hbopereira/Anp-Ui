@@ -76,7 +76,7 @@ export class MenuDropComponent implements OnInit {
             {
                 label: 'Estoque',
                 items: [
-                    {label: 'Movimentação Estoque', icon: 'fa-search'}
+                    {label: 'Movimentação', icon: 'fa-search'}
                 ]
             },
         ]

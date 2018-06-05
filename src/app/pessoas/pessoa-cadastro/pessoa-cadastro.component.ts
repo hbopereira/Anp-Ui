@@ -3,11 +3,13 @@ import { FormControl } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { ConfirmationService } from 'primeng/api';
+
 import { ToastyService } from 'ng2-toasty';
 
 import { ErrorHandlerService } from './../../core/error-handler.service';
 import { PessoaService } from './../pessoa.service';
-import { Pessoa } from './../../core/model';
+import { Pessoa, Contato } from './../../core/model';
 
 
 
@@ -19,11 +21,16 @@ import { Pessoa } from './../../core/model';
 export class PessoaCadastroComponent implements OnInit {
   pessoa = new Pessoa();
 
+  contato: Contato;
+  contatoIndex: number;
+  exibindoFormularioContato = false;
+
   tipos = [
     {label: 'Física', value: 'FISICA'},
     {label: 'Juridica', value: 'JURIDICA'}
 ];
   constructor( private pessoaService: PessoaService,
+               private confirmationService: ConfirmationService,
                private toasty: ToastyService,
                private errorHandler: ErrorHandlerService,
                private title: Title,
@@ -37,6 +44,44 @@ export class PessoaCadastroComponent implements OnInit {
     if (idPessoa) {
       this.carregarPessoa(idPessoa);
     }
+  }
+
+  prepararNovoContato() {
+    this.exibindoFormularioContato = true;
+    this.contato = new Contato();
+    this.contatoIndex = this.pessoa.contatos.length;
+  }
+
+  clonarContato(contato: Contato): Contato {
+    return new Contato(contato.id,
+                          contato.email,
+                          contato.telefone);
+  }
+
+  prepararEdicaoContato(contato: Contato, index: number) {
+    this.contato = this.clonarContato(contato);
+    this.exibindoFormularioContato = true;
+    this.contatoIndex = index;
+  }
+
+  confirmarContato(frm: FormControl) {
+    this.pessoa.contatos[this.contatoIndex] = this.clonarContato(this.contato);
+
+    this.exibindoFormularioContato = false;
+    frm.reset();
+  }
+
+  confirmarExclusao(index: number) {
+    this.confirmationService.confirm({
+      message: 'tem certeza que deseja excluir ?',
+      accept: () => {
+        this.excluirContato(index);
+      }
+    });
+  }
+
+  excluirContato(index: number) {
+    this.pessoa.contatos.splice(index, 1);
   }
 
 

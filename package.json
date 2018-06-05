@@ -52,7 +52,6 @@
     "typescript": "~2.5.3"
   },
   "devDependencies": {
-
   },
   "engines": {
     "node": "9.9.0",

@@ -16,6 +16,21 @@ cnpj: string;
 email: string;
 ativo = true;
 endereco = new Endereco();
+contatos = new Array<Contato>();
+}
+
+export class Contato {
+  id: number;
+  email: string;
+  telefone: string;
+
+  constructor(id?: number,
+    email?: string,
+    telefone?: string) {
+      this.id = id;
+      this.email = email;
+      this.telefone = telefone;
+  }
 }
 
 export class Categoria {

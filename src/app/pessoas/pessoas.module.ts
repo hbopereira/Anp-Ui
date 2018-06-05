@@ -18,6 +18,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { PanelModule } from 'primeng/panel';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -27,7 +29,9 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     BrowserModule,
     BrowserAnimationsModule,
     InputTextModule,
+    PanelModule,
     ButtonModule,
+    DialogModule,
     TableModule,
     TooltipModule,
     CalendarModule,

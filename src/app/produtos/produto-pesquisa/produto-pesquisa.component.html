@@ -44,8 +44,7 @@
             <th>Cód Barras</th>
             <th>Descricao</th>
             <th>Aplicação</th>
-            <th>Cadastro</th>
-            <th>Custo(R$)</th>
+            <th class="col-valor-header">Custo(R$)</th>
             <th class="col-valorUnitario-header">Valor Uni(R$)</th>
             <th>Classe</th>
             <th>Grupo</th>
@@ -59,8 +58,7 @@
             <td>{{produto.codigoBarras}}</td>
             <td>{{produto.descricao}}</td>
             <td>{{produto.aplicacao}}</td>
-            <td>{{produto.dataCadastro}}</td>
-            <td>{{produto.custoMedio}}</td>
+            <td class="col-data">{{produto.custoMedio}}</td>
             <td class="col-valor">{{produto.valorUnitario | number:'1.2-2'}}</td>
             <td>{{produto.classe.nome}}</td>
             <td>{{produto.grupo.nome}}</td>
@@ -88,10 +86,12 @@
       </div>
     </div>
 
-
   <div class="ui-g-12">
-      <a class="ui-button-success" icon="fa-plus" routerLink="/produtos/novo" pButton label="Novo Produto"></a>
+      <a class="ui-button-success" icon="fa-plus" routerLink="/produtos/novo" pButton label="Novo"></a>
+      <a class="ui-button-warning" icon="fa-pencil"  pButton label="Editar"></a>
+      <a class="ui-button-danger" icon="fa-trash" pButton label="Excluir"></a>
   </div>
+
   <br>
   <br>
 </div>
