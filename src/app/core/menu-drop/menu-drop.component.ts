@@ -86,7 +86,6 @@ export class MenuDropComponent implements OnInit {
         items: [{
                 label: 'Lançamento',
                 items: [
-                    {label: 'Novo Lançamento', icon: 'fa-plus', routerLink: 'lancamentos/novo'},
                     {label: 'Lançamentos', icon: 'fa-search', routerLink: 'lancamentos'}
                 ]
             },
@@ -101,6 +100,7 @@ export class MenuDropComponent implements OnInit {
                 label: 'Financeiro',
                 items: [
                     {label: 'Lançamentos por Pessoa F/J', icon: 'fa-search', routerLink: 'relatorio-por-pessoa'},
+                    {separator: true},
                     {label: 'Lançamentos por Categoria', icon: 'fa-search'}
                 ]
             },

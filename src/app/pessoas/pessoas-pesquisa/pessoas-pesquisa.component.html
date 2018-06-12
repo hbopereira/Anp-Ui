@@ -6,31 +6,16 @@
                 <h1>Pesquisa de Pessoas</h1>
               </div>
 
-              <div align="center" class="ui-g-12">
-                  <h3>Pessoas Físicas/Juridicas</h3>
-              </div>
-
-              <div class="ui-g-12 ui-fluid">
+              <div class="ui-g-12 ui-md-8 ui-fluid">
                 <label>Nome/Razão Social</label>
                 <input pInputText type="text" name="nome"
-                [(ngModel)]="filtroPessoa.nome" placeholder="Informe o nome ou razão social para pesquisa">
+                [(ngModel)]="filtroPessoa.nome">
               </div>
 
               <div class="ui-g-12 ui-md-4 ui-fluid">
                   <label>Tipo Pessoa</label>
                   <input pInputText type="text" name="tipo"
-                  [(ngModel)]="filtroPessoa.tipo" placeholder="informe o tipo ex: física / juridica para pesquisa ">
-              </div>
-
-              <div class="ui-g-12 ui-md-4 ui-fluid">
-                  <label>CNPJ/CPF</label>
-                  <input pInputText type="text" placeholder="informe o CNPJ/CPF para pesquisa">
-              </div>
-
-              <div class="ui-g-12 ui-md-4 ui-fluid">
-                  <label>Status</label>
-                  <input pInputText type="text" name="ativo"
-                  [(ngModel)]="filtroPessoa.ativo" placeholder="informe o status para pesquisa">
+                  [(ngModel)]="filtroPessoa.tipo">
               </div>
 
               <div class="ui-g-12">
@@ -65,8 +50,8 @@
           <ng-template pTemplate="body" let-pessoa>
             <tr>
               <td>{{ pessoa.nome }}</td>
-              <td>{{ pessoa.endereco.cidade }}</td>
-              <td>{{ pessoa.endereco.estado }}</td>
+              <td>{{ pessoa.endereco.cidade?.nome }}</td>
+              <td>{{ pessoa.endereco.cidade?.estado.nome }}</td>
               <td class="col-tipo">{{ pessoa.tipo }}</td>
               <td>{{ pessoa.cnpj }}</td>
               <td class="col-status">
@@ -100,7 +85,7 @@
 
 
     <div class="ui-g-12">
-        <a class="ui-button-success" routerLink="/pessoas/nova" pButton label="Nova Pessoa"></a>
+        <a class="ui-button-success" icon="fa-plus" routerLink="/pessoas/nova" pButton label="Nova Pessoa"></a>
     </div>
     <br>
     <br>

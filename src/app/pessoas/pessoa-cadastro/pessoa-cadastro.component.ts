@@ -20,6 +20,9 @@ import { Pessoa, Contato } from './../../core/model';
 })
 export class PessoaCadastroComponent implements OnInit {
   pessoa = new Pessoa();
+  estados: any[];
+  cidades: any[];
+  estadoSelecionado: number;
 
   contato: Contato;
   contatoIndex: number;
@@ -41,9 +44,25 @@ export class PessoaCadastroComponent implements OnInit {
     const idPessoa = this.route.snapshot.params['id'];
     this.title.setTitle('Nova pessoa');
 
+    this.carregarEstados();
+
     if (idPessoa) {
       this.carregarPessoa(idPessoa);
     }
+  }
+
+  carregarEstados() {
+    this.pessoaService.listarEstados().then(lista => {
+      this.estados = lista.map(uf => ({ label: uf.nome, value: uf.id }));
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  carregarCidades() {
+    this.pessoaService.pesquisarCidades(this.estadoSelecionado).then(lista => {
+      this.cidades = lista.map(c => ({ label: c.nome, value: c.id }));
+    })
+    .catch(erro => this.errorHandler.handle(erro));
   }
 
   prepararNovoContato() {
@@ -122,6 +141,14 @@ export class PessoaCadastroComponent implements OnInit {
     this.pessoaService.buscarPorId(id)
       .then(pessoa => {
         this.pessoa = pessoa;
+
+        this.estadoSelecionado = (this.pessoa.endereco.cidade) ?
+        this.pessoa.endereco.cidade.estado.id : null;
+
+        if (this.estadoSelecionado) {
+          this.carregarCidades();
+        }
+
         this.atualizarTituloEdicao();
       })
       .catch(erro => this.errorHandler.handle(erro));
