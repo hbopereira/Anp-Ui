@@ -6,23 +6,18 @@
               <h1>Pesquisa de Produtos</h1>
             </div>
 
-            <div class="ui-g-5 ui-md-5 ui-fluid">
+            <div class="ui-g-5 ui-md-2 ui-fluid">
                 <label>Codigo Barras</label>
                 <input pInputText type="text">
             </div>
 
-            <div class="ui-g-5 ui-md-5 ui-fluid">
+            <div class="ui-g-5 ui-md-8 ui-fluid">
               <label>Descricão</label>
               <input pInputText type="text" name="descricao"
               [(ngModel)]="filtroProduto.descricao">
             </div>
 
-            <div class="ui-g-2 ui-md-2 ui-fluid">
-                <label>Data Cadastro</label>
-                <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '150px' }" name="dataCadastro"></p-calendar>
-            </div>
-
-            <div class="ui-g-12">
+            <div class="ui-g-2">
               <button pButton type="submit" label="Pesquisar"></button>
             </div>
       </form>

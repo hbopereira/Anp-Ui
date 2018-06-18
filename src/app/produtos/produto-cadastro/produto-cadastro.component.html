@@ -7,16 +7,19 @@
         <h1 align="center">{{ editando ? 'Edição de' : 'Cadastro de' }} Produto</h1>
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid">
-        <label>Código Barras</label>
+      <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Código Barras(Gerar)</label>
         <input pInputText type="text" name="codigoBarras"
         formControlName="codigoBarras">
 
         <app-message [control]="formulario.get('codigoBarras')" error="obrigatoriedade"
           text="Informe o codigo de barras (obrigatória)"></app-message>
       </div>
+      </div>
 
-      <div class="ui-g-12 ui-md-4 ui-fluid">
+      <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Descrição</label>
         <input pInputText type="text" name="descricao"
         formControlName="descricao">
@@ -27,7 +30,7 @@
           text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-4 ui-fluid">
+      <div class=" ui-g-12 ui-md-6 ui-fluid">
         <label>Aplicação</label>
         <input pInputText type="text" name="aplicacao"
         formControlName="aplicacao">
@@ -37,92 +40,84 @@
         <app-message [control]="formulario.get('aplicacao')" error="tamanhoMinimo"
           text="Mínimo de {{ formulario.get('aplicacao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
-
-
-      <div class="ui-g-12 ui-md-2 ui-fluid" formGroupName="tipo">
-        <label>Tipo de Estoque</label>
-        <p-dropdown name="tipo" [options]="tipos" placeholder="Selecione"
-        [autoWidth]="false" [filter]="true"
-        formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid">
-        <label>Valor Unitario</label>
-        <input pInputText type="text" name="valorUnitario" placeholder="0,00"
-          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
-          formControlName="valorUnitario">
+      <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
+        <label (click)="prepararNovaClasse()">Classe</label>
+        <p-dropdown name="classe" [options]="classes" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid">
-        <label>Custo Médio</label>
-        <input [disabled]="true" pInputText type="text" name="custoMedio" placeholder="0,00"
-          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
-          formControlName="custoMedio">
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="marca">
+        <label (click)="prepararNovaMarca()">Marca</label>
+        <p-dropdown name="marca" [options]="marcas" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid">
-        <label>Ultimo Custo</label>
-        <input pInputText type="text" name="ultimoCusto" placeholder="0,00"
-          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
-          formControlName="ultimoCusto">
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="grupo">
+        <label  (click)="prepararNovoGrupo()">Grupo</label>
+        <p-dropdown name="grupo" [options]="grupos" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid">
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
+        <label (click)="prepararNovoSubgrupo()">Subgrupo</label>
+        <p-dropdown name="subGrupo" [options]="subGrupos" [filter]="true"
+          placeholder="Selecione" [autoWidth]="false"
+          formControlName="id"></p-dropdown>
+      </div>
+      </div>
+
+      <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Estoque Minimo</label>
         <input pInputText type="text" name="estoqueMinimo" placeholder="0"
           formControlName="estoqueMinimo">
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid">
+      <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Estoque Máximo</label>
         <input pInputText type="text" name="estoqueMaximo" placeholder="0"
           formControlName="estoqueMaximo">
       </div>
 
-      <div class="ui-g-12 ui-md-2 ui-fluid" formGroupName="unidadeMedida">
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="unidadeMedida">
         <label>Unidade Medida</label>
         <p-dropdown name="unidadeMedida" [options]="unidadesMedida" placeholder="Selecione"
         [autoWidth]="false" [filter]="true"
         formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
-        <label>Classe</label>
-        <p-dropdown name="classe" [options]="classes" [filter]="true"
-          placeholder="Selecione" [autoWidth]="false"
-          formControlName="id"></p-dropdown>
-          <button type="button" (click)="prepararNovaClasse()">Nova</button>
+      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="tipo">
+        <label>Tipo de Estoque</label>
+        <p-dropdown name="tipo" [options]="tipos" placeholder="Selecione"
+        [autoWidth]="false" [filter]="true"
+        formControlName="id"></p-dropdown>
+      </div>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="marca">
-        <label>Marca</label>
-        <p-dropdown name="marca" [options]="marcas" [filter]="true"
-          placeholder="Selecione" [autoWidth]="false"
-          formControlName="id"></p-dropdown>
-          <button type="button"  (click)="prepararNovaMarca()">Nova</button>
+      <div class="ui-g-12">
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Valor Unitario</label>
+        <input pInputText type="text" name="valorUnitario" placeholder="0,00"
+          formControlName="valorUnitario">
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="grupo">
-        <label>Grupo</label>
-        <p-dropdown name="grupo" [options]="grupos" [filter]="true"
-          placeholder="Selecione" [autoWidth]="false"
-          formControlName="id"></p-dropdown>
-          <button type="button" (click)="prepararNovoGrupo()">Novo</button>
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Custo Médio</label>
+        <input [disabled]="true" pInputText type="text" name="custoMedio" placeholder="0,00"
+          formControlName="custoMedio">
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
-        <label>Subgrupo</label>
-        <p-dropdown name="subGrupo" [options]="subGrupos" [filter]="true"
-          placeholder="Selecione" [autoWidth]="false"
-          formControlName="id"></p-dropdown>
-          <button type="button" (click)="prepararNovoSubgrupo()">Novo</button>
+      <div class="ui-g-12 ui-md-2 ui-fluid">
+        <label>Ultimo Custo</label>
+        <input pInputText type="text" name="ultimoCusto" placeholder="0,00"
+          formControlName="ultimoCusto">
       </div>
-
-
-      <div class="ui-g-12 ui-fluid">
-        <label>Observação</label>
-        <textarea pInputTextarea rows="3" name="observacao"
-        formControlName="observacao" placeholder="Observação"></textarea>
       </div>
 
       <!--<div class="ui-g-12">
@@ -178,12 +173,7 @@
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
         <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo()"></button>
-        <button class="ui-button-success" icon="fa-search"  pButton type="button" routerLink="/produtos" label="Produtos"></button>
-
-        <div align="right">
-            <p>Data Cadastro: {{produto.dataCadastro}}</p>
-            <p>Data Modificação: {{produto.dataModificacao}}</p>
-          </div>
+        <button class="ui-button-danger"  pButton type="button" routerLink="/dashboard" label="Sair"></button>
       </div>
     </div>
 

@@ -45,6 +45,7 @@ export class MenuDropComponent implements OnInit {
                     {label: 'Pessoas', icon: 'fa-search', routerLink: 'pessoas'}
                 ]
             },
+            {separator: true},
             {
                 label: 'Produto',
                 items: [
@@ -73,6 +74,7 @@ export class MenuDropComponent implements OnInit {
                     {label: 'Compras', icon: 'fa-search'}
                 ]
             },
+            {separator: true},
             {
                 label: 'Estoque',
                 items: [
@@ -89,6 +91,7 @@ export class MenuDropComponent implements OnInit {
                     {label: 'Lançamentos', icon: 'fa-search', routerLink: 'lancamentos'}
                 ]
             },
+            {separator: true},
             {
               label: 'Dashboard', routerLink: 'dashboard'
             }

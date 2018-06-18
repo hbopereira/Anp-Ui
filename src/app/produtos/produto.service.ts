@@ -13,7 +13,7 @@ export class ProdutoFiltro {
    descricao: string;
    valorUnitario: number;
    pagina = 0;
-   itensPorPagina = 1;
+   itensPorPagina = 5;
 }
 
 @Injectable()

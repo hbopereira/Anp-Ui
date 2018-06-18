@@ -200,7 +200,7 @@ export class ProdutoCadastroComponent implements OnInit {
     this.produtoService.adicionar(this.formulario.value)
       .then(produto => {
         this.toasty.success('Produto adicionado com sucesso!');
-        this.router.navigate(['/produtos', produto.id]);
+        this.router.navigate(['/produtos']);
       })
       .catch(erro => this.errorHandler.handleError(erro));
   }
