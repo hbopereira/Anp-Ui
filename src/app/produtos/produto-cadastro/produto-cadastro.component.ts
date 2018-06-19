@@ -174,10 +174,6 @@ export class ProdutoCadastroComponent implements OnInit {
     });
    }
 
-   desabilitarInputCustoMedio() {
-
-   }
-
    validarObrigatoriedade(input: FormControl) {
      return (input.value ? null : { obrigatoriedade: true});
    }

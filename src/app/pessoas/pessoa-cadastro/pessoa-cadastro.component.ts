@@ -116,7 +116,7 @@ export class PessoaCadastroComponent implements OnInit {
     this.pessoaService.adicionar(this.pessoa)
       .then(pessoa => {
         this.toasty.success('Pessoa adicionada com sucesso!');
-        this.router.navigate(['/pessoas', pessoa.id]);
+        this.router.navigate(['/pessoas']);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

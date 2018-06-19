@@ -1,6 +1,6 @@
 
   <div class="container">
-    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+    <form #f="ngForm" autocomplete="off" (keyup.enter)="salvar(f)">
 
       <div class="ui-g">
         <div class="ui-g-12">
@@ -168,7 +168,7 @@
         <div class="ui-g-12">
           <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
           <button class="ui-button-warning" pButton type="button" label="Cancelar" (click)="nova(f)" ></button>
-          <button pButton type="button" icon="fa-search" label="Pessoas" routerLink="/pessoas" class="ui-button-success"></button>
+          <button pButton type="button" label="Sair" routerLink="/pessoas" class="ui-button-danger"></button>
         </div>
       </div>
 
