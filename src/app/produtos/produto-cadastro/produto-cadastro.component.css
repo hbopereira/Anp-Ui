@@ -7,3 +7,11 @@
   color: #fff;
   text-align: center;
 }
+
+input[type=text] {
+  background-color: #d3d3d3;
+  }
+
+p-dropdown {
+  background-color: #d3d3d3;
+}

@@ -46,7 +46,7 @@
 
       <div class="ui-g-12">
       <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
-        <label href="" (click)="prepararNovaClasse()">Classe</label>
+        <label (click)="prepararNovaClasse()">Classe</label>
         <p-dropdown name="classe" [options]="classes" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
