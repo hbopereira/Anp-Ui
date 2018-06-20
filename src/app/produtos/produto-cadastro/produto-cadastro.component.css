@@ -15,3 +15,7 @@ input[type=text] {
 p-dropdown {
   background-color: #d3d3d3;
 }
+
+form {
+  height: 100px;
+}

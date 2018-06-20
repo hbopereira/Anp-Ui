@@ -7,21 +7,19 @@
         <h1 align="center">{{ editando ? 'Edição de' : 'Cadastro de' }} Produto</h1>
       </div>
 
-      <div class="ui-g-12">
-      <div class="ui-g-12 ui-md-3 ui-fluid">
-        <label>Código Barras(Gerar)</label>
-        <input pInputText type="text" name="codigoBarras"
+      <div class="ui-g-12 ui-md-5 ui-fluid">
+        <label>C.Barras(Gerar)</label>
+        <input style="width:160px;height:28px" pInputText type="text" name="codigoBarras"
         formControlName="codigoBarras">
 
         <app-message [control]="formulario.get('codigoBarras')" error="obrigatoriedade"
           text="Informe o codigo de barras (obrigatória)"></app-message>
       </div>
-      </div>
 
-      <div class="ui-g-12">
-      <div class="ui-g-12 ui-md-6 ui-fluid">
+
+      <div class="ui-g-12 ui-md-12 ui-fluid">
         <label>Descrição</label>
-        <input pInputText type="text" name="descricao"
+        <input style="width:300px;height:28px" pInputText type="text" name="descricao"
         formControlName="descricao">
 
         <app-message [control]="formulario.get('descricao')" error="obrigatoriedade"
@@ -29,12 +27,10 @@
         <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
           text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
-      </div>
 
-      <div class="ui-g-12">
-      <div class=" ui-g-12 ui-md-6 ui-fluid">
+      <div class=" ui-g-12 ui-md-12 ui-fluid">
         <label>Aplicação</label>
-        <input pInputText type="text" name="aplicacao"
+        <input style="width:300px;height:28px" pInputText type="text" name="aplicacao"
         formControlName="aplicacao">
 
         <app-message [control]="formulario.get('aplicacao')" error="obrigatoriedade"
@@ -42,42 +38,38 @@
         <app-message [control]="formulario.get('aplicacao')" error="tamanhoMinimo"
           text="Mínimo de {{ formulario.get('aplicacao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
-      </div>
 
-      <div class="ui-g-12">
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
+      <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
         <label (click)="prepararNovaClasse()">Classe</label>
         <p-dropdown name="classe" [options]="classes" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="marca">
+      <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="marca">
         <label (click)="prepararNovaMarca()">Marca</label>
         <p-dropdown name="marca" [options]="marcas" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="grupo">
+      <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="grupo">
         <label  (click)="prepararNovoGrupo()">Grupo</label>
         <p-dropdown name="grupo" [options]="grupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
+      <div  class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
         <label (click)="prepararNovoSubgrupo()">Subgrupo</label>
         <p-dropdown name="subGrupo" [options]="subGrupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
-      </div>
 
-      <div class="ui-g-12">
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Estoque Minimo</label>
-        <input pInputText type="text" name="estoqueMinimo" placeholder="0"
+        <input  pInputText type="text" name="estoqueMinimo" placeholder="0"
           formControlName="estoqueMinimo">
       </div>
 
@@ -87,22 +79,20 @@
           formControlName="estoqueMaximo">
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="unidadeMedida">
+      <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="unidadeMedida">
         <label>Unidade Medida</label>
         <p-dropdown name="unidadeMedida" [options]="unidadesMedida" placeholder="Selecione"
         [autoWidth]="false" [filter]="true"
         formControlName="id"></p-dropdown>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid" formGroupName="tipo">
+      <div style="width:200px;height:28px"class="ui-g-12 ui-md-3 ui-fluid" formGroupName="tipo">
         <label>Tipo de Estoque</label>
         <p-dropdown name="tipo" [options]="tipos" placeholder="Selecione"
         [autoWidth]="false" [filter]="true"
         formControlName="id"></p-dropdown>
       </div>
-      </div>
 
-      <div class="ui-g-12">
       <div class="ui-g-12 ui-md-2 ui-fluid">
         <label>Valor Unitario</label>
         <input pInputText type="text" name="valorUnitario" placeholder="0,00"
@@ -119,7 +109,6 @@
         <label>Ultimo Custo</label>
         <input pInputText type="text" name="ultimoCusto" placeholder="0,00"
           formControlName="ultimoCusto">
-      </div>
       </div>
 
       <!--<div class="ui-g-12">
