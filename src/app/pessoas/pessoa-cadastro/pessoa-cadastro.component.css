@@ -6,3 +6,13 @@
   color: #fff;
   text-align: center;
 }
+
+input[type=text] {
+  background-color: #d3d3d3;
+  }
+
+p-inputMask[type=text] {
+  background-color: #d3d3d3;
+}
+
+

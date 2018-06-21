@@ -8,9 +8,10 @@
       </div>
 
       <div class="ui-g-12 ui-md-5 ui-fluid">
-        <label>C.Barras(Gerar)</label>
+        <label>Co.Barras</label>
         <input style="width:160px;height:28px" pInputText type="text" name="codigoBarras"
         formControlName="codigoBarras">
+        <button>Gerar</button>
 
         <app-message [control]="formulario.get('codigoBarras')" error="obrigatoriedade"
           text="Informe o codigo de barras (obrigatória)"></app-message>
