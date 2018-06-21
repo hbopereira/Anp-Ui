@@ -4,7 +4,7 @@
 
       <div class="ui-g">
         <div class="ui-g-12">
-          <h1>{{ editando ? 'Edição de' : 'Cadastro de' }} Pessoa</h1>
+          <h2>{{ editando ? 'Edição de' : 'Cadastro de' }} Pessoa</h2>
         </div>
 
         <div class="ui-g-12">
@@ -167,20 +167,12 @@
 
         <div class="ui-g-12">
           <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-          <button class="ui-button-warning" pButton type="button" label="Cancelar" (click)="nova(f)" ></button>
           <button pButton type="button" label="Sair" routerLink="/pessoas" class="ui-button-danger"></button>
         </div>
       </div>
 
     </form>
   </div>
-  <br>
-<br>
-<footer class="layout-rodape">
-    <div>
-      <p>&copy; 2018 ANP Soluções Digitais. Todos os direitos reservados.</p>
-    </div>
-</footer>
 
 <p-dialog header="Novo Contato" [(visible)]="exibindoFormularioContato"
  modal="modal"  *ngIf="contato">

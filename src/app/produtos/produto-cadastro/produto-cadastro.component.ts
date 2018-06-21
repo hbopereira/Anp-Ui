@@ -148,8 +148,6 @@ export class ProdutoCadastroComponent implements OnInit {
       valorUnitario: [null, Validators.required],
       custoMedio: [null, Validators.required],
       ultimoCusto: [null, Validators.required],
-      estoqueMinimo: [null, Validators.required],
-      estoqueMaximo: [null, Validators.required],
       unidadeMedida: this.formBuilder.group({
         id: [null, Validators.required],
         descricao: []

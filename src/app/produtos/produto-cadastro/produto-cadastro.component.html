@@ -4,12 +4,13 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>{{ editando ? 'Edição de' : 'Cadastro de' }} Produto</h1>
+        <h2>{{ editando ? 'Edição de' : 'Cadastro de' }} Produto</h2>
       </div>
 
+      <div class="ui-g-12">
       <div class="ui-g-12 ui-md-5 ui-fluid">
-        <label>Co.Barras</label>
-        <input style="width:160px;height:28px" pInputText type="text" name="codigoBarras"
+        <label>Cod.Barra</label>
+        <input style="width:180px;height:28px" pInputText type="text" name="codigoBarras"
         formControlName="codigoBarras">
         <button>Gerar</button>
 
@@ -17,7 +18,14 @@
           text="Informe o codigo de barras (obrigatória)"></app-message>
       </div>
 
+      <div class="ui-g-12 ui-md-5 ui-fluid">
+        <label>Imagem</label>
+        <input style="width:50px;height:28px" pInputText type="text">
 
+      </div>
+      </div>
+
+      <div class="ui-g-12">
       <div class="ui-g-12 ui-md-12 ui-fluid">
         <label>Descrição</label>
         <input style="width:300px;height:28px" pInputText type="text" name="descricao"
@@ -28,7 +36,9 @@
         <app-message [control]="formulario.get('descricao')" error="tamanhoMinimo"
           text="Mínimo de {{ formulario.get('descricao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
+      </div>
 
+      <div class="ui-g-12">
       <div class=" ui-g-12 ui-md-12 ui-fluid">
         <label>Aplicação</label>
         <input style="width:300px;height:28px" pInputText type="text" name="aplicacao"
@@ -39,7 +49,9 @@
         <app-message [control]="formulario.get('aplicacao')" error="tamanhoMinimo"
           text="Mínimo de {{ formulario.get('aplicacao').errors?.tamanhoMinimo?.tamanho }} caracteres"></app-message>
       </div>
+      </div>
 
+      <div class="ui-g-12">
       <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
         <label (click)="prepararNovaClasse()">Classe</label>
         <p-dropdown name="classe" [options]="classes" [filter]="true"
@@ -53,33 +65,32 @@
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
-
-      <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="grupo">
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="ui-g-12">
+      <div style="width:200px;height:28px" class="ui-g-12 ui-md-8 ui-fluid" formGroupName="grupo">
         <label  (click)="prepararNovoGrupo()">Grupo</label>
         <p-dropdown name="grupo" [options]="grupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
 
-      <div  class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
+      <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
         <label (click)="prepararNovoSubgrupo()">Subgrupo</label>
         <p-dropdown name="subGrupo" [options]="subGrupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
-
-      <div class="ui-g-12 ui-md-3 ui-fluid">
-        <label>Estoque Minimo</label>
-        <input  pInputText type="text" name="estoqueMinimo" placeholder="0"
-          formControlName="estoqueMinimo">
       </div>
+      <br>
+      <br>
+      <br>
+      <br>
 
-      <div class="ui-g-12 ui-md-3 ui-fluid">
-        <label>Estoque Máximo</label>
-        <input pInputText type="text" name="estoqueMaximo" placeholder="0"
-          formControlName="estoqueMaximo">
-      </div>
-
+      <div class="ui-g-12">
       <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="unidadeMedida">
         <label>Unidade Medida</label>
         <p-dropdown name="unidadeMedida" [options]="unidadesMedida" placeholder="Selecione"
@@ -93,6 +104,11 @@
         [autoWidth]="false" [filter]="true"
         formControlName="id"></p-dropdown>
       </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
 
       <div class="ui-g-12 ui-md-2 ui-fluid">
         <label>Valor Unitario</label>
@@ -164,20 +180,12 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
-        <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo()"></button>
         <button class="ui-button-danger"  pButton type="button" routerLink="/produtos" label="Sair"></button>
       </div>
     </div>
 
   </form>
 </div>
-<br>
-<br>
-<footer class="layout-rodape">
-    <div>
-      <p>&copy; 2018 ANP Soluções Digitais. Todos os direitos reservados.</p>
-    </div>
-</footer>
 
 <!--<p-dialog header="Novo Fornecedor" [(visible)]="exibindoFormularioFornecedor"
  modal="modal" *ngIf="fornecedor">
