@@ -24,6 +24,7 @@ import { ClasseModule } from './classe/classe.module';
 import { MarcaModule } from './marca/marca.module';
 import { GrupoModule } from './grupo/grupo.module';
 import { SubgrupoModule } from './subgrupo/subgrupo.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 

@@ -4,7 +4,7 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-        <h1>{{ editando ? 'Edição de' : 'Cadastro de' }} Lancamento</h1>
+        <h2>{{ editando ? 'Edição de' : 'Cadastro de' }} Lancamento</h2>
       </div>
 
       <div class="ui-g-12" align="center">
@@ -88,8 +88,7 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid"></button>
-        <button class="ui-button-warning" pButton type="submit" label="Cancelar" (click)="novo()"></button>
-        <button class="ui-button-success" icon="fa-search"  pButton type="button" routerLink="/lancamentos" label="Lançamentos"></button>
+        <button class="ui-button-danger"  pButton type="button" routerLink="/lancamentos" label="Sair"></button>
       </div>
     </div>
 

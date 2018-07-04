@@ -8,7 +8,7 @@
       </div>
 
       <div class="ui-g-12">
-      <div class="ui-g-12 ui-md-5 ui-fluid">
+      <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Cod.Barra</label>
         <input style="width:180px;height:28px" pInputText type="text" name="codigoBarras"
         formControlName="codigoBarras">
@@ -18,9 +18,9 @@
           text="Informe o codigo de barras (obrigatória)"></app-message>
       </div>
 
-      <div class="ui-g-12 ui-md-5 ui-fluid">
+      <div class="ui-g-12 ui-md-4 ui-md-offset-4">
         <label>Imagem</label>
-        <input style="width:50px;height:28px" pInputText type="text">
+        <input style="width:50px;height:28px"  type="file">
 
       </div>
       </div>
@@ -53,14 +53,14 @@
 
       <div class="ui-g-12">
       <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="classe">
-        <label (click)="prepararNovaClasse()">Classe</label>
+        <label (click)="prepararNovaClasse()">Classe +</label>
         <p-dropdown name="classe" [options]="classes" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
 
       <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="marca">
-        <label (click)="prepararNovaMarca()">Marca</label>
+        <label (click)="prepararNovaMarca()">Marca +</label>
         <p-dropdown name="marca" [options]="marcas" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
@@ -72,14 +72,14 @@
       <br>
       <div class="ui-g-12">
       <div style="width:200px;height:28px" class="ui-g-12 ui-md-8 ui-fluid" formGroupName="grupo">
-        <label  (click)="prepararNovoGrupo()">Grupo</label>
+        <label  (click)="prepararNovoGrupo()">Grupo +</label>
         <p-dropdown name="grupo" [options]="grupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>
       </div>
 
       <div style="width:200px;height:28px" class="ui-g-12 ui-md-3 ui-fluid" formGroupName="subGrupo">
-        <label (click)="prepararNovoSubgrupo()">Subgrupo</label>
+        <label (click)="prepararNovoSubgrupo()">Subgrupo +</label>
         <p-dropdown name="subGrupo" [options]="subGrupos" [filter]="true"
           placeholder="Selecione" [autoWidth]="false"
           formControlName="id"></p-dropdown>

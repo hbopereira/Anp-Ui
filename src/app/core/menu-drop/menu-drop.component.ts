@@ -38,6 +38,23 @@ export class MenuDropComponent implements OnInit {
           ]
       },*/
       {
+        label: 'Arquivo',
+        items: [{
+                label: 'Usuário',
+                items: [
+                    {label: 'Usuários', icon: 'fa-search', routerLink: 'vendas'}
+                ]
+            },
+            {separator: true},
+            {
+                label: 'Armazém',
+                items: [
+                    {label: 'Armazéns', icon: 'fa-search'}
+                ]
+            },
+        ]
+      },
+      {
         label: 'Administrativo',
         items: [{
                 label: 'Pessoa F/J',

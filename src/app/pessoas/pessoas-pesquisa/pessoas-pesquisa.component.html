@@ -6,21 +6,13 @@
                 <h2>Pesquisa de Pessoas</h2>
               </div>
 
-              <div class="ui-g-12 ui-md-8 ui-fluid">
+              <div class="ui-g-12 ui-md-10 ui-fluid">
                 <label>Nome/Razão Social</label>
                 <input pInputText type="text" name="nome"
                 [(ngModel)]="filtroPessoa.nome">
               </div>
 
-              <div class="ui-g-12 ui-md-4 ui-fluid">
-                  <label>Tipo Pessoa</label>
-                  <input pInputText type="text" name="tipo"
-                  [(ngModel)]="filtroPessoa.tipo">
-              </div>
-
-              <div class="ui-g-12">
-                <button pButton type="submit" label="Pesquisar"></button>
-              </div>
+              <button pButton type="submit" label="Pesquisar"></button>
         </form>
     </div>
 

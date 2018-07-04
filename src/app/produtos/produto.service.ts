@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, URLSearchParams } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AuthHttp } from 'angular2-jwt';
 
 import { Produto, Classe, Marca, Grupo, SubGrupo } from './../core/model';
