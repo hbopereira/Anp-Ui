@@ -3,9 +3,30 @@
     <div class="ui-g">
       <div class="ui-g-12">
          <!-- <a title="Menu" class="navbar-toggle" (click)="exibindoMenu = ! exibindoMenu"><i class="fa fa-bars"></i></a> -->
+         <a (click)="prepararNovoUsuario()">Cadastre-se</a>
       </div>
     </div>
   </div>
+
+  <p-dialog header="Cadastre-se" [(visible)]="exibindoFormularioCadastroUsuario"
+ modal="modal">
+ <form #frmUsuario="ngForm">
+   <div class="ui-g-12 ui-fluid">
+    <label>Email</label>
+    <input pInputText type="text"/>
+   </div>
+
+   <div class="ui-g-12 ui-fluid">
+    <label>Senha</label>
+    <input pInputText type="password"/>
+   </div>
+
+   <div class="ui-g-12">
+      <button pButton type="submit" label="Enviar" (click)="enviarSolicitacao()" [disabled]="frmUsuario.invalid"></button>
+   </div>
+  </form>
+
+</p-dialog>
 
   <!--<ul class="navbar-menu" [hidden]="!exibindoMenu">
     <li class="navbar-usuario">{{ authService.jwtPayload?.nome }}</li>

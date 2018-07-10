@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../seguranca/auth.service';
 import { LogoutService } from '../../seguranca/logout.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-navbar',
@@ -13,12 +14,23 @@ export class NavbarComponent implements OnInit {
 
   exibindoMenu = false;
 
+  exibindoFormularioCadastroUsuario = false;
+
   constructor(private router: Router,
               public authService: AuthService,
               private logoutService: LogoutService,
-              private errorHandler: ErrorHandler) { }
+              private errorHandler: ErrorHandler,
+              private toasty: ToastyService) { }
 
   ngOnInit() {
+  }
+
+  prepararNovoUsuario() {
+    this.exibindoFormularioCadastroUsuario = true;
+  }
+
+  enviarSolicitacao () {
+      this.toasty.success('Cadastro realizado com sucesso !');
   }
 
 

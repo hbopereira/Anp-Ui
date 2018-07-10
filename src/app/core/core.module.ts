@@ -31,6 +31,11 @@ import { GrupoService } from '../grupo/grupo.service';
 import { SubgrupoService } from '../subgrupo/subgrupo.service';
 import { ClasseService } from '../classe/classe.service';
 import { MarcaService } from '../marca/marca.service';
+import { PanelModule } from 'primeng/panel';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { ButtonModule } from 'primeng/components/button/button';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -40,7 +45,14 @@ import { MarcaService } from '../marca/marca.service';
     ToastyModule.forRoot(),
     ConfirmDialogModule,
     MenubarModule,
-    MegaMenuModule
+    MegaMenuModule,
+    PanelModule,
+    DialogModule,
+    InputTextModule,
+    ButtonModule,
+    FormsModule,
+    CommonModule
+
   ],
   declarations: [
     NavbarComponent,
@@ -54,7 +66,9 @@ import { MarcaService } from '../marca/marca.service';
     ToastyModule,
     ConfirmDialogModule,
     MenubarModule,
-    MegaMenuModule
+    MegaMenuModule,
+    PanelModule,
+    DialogModule
   ],
   providers : [
       ErrorHandlerService,
